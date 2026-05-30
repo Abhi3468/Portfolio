@@ -1,0 +1,182 @@
+/* =========================================================
+   theme-accenture.css  — v2 (closer to real Accenture brand)
+   Brand basis: purple #A100FF + absolute black #000000,
+   bold sans-serif, sharp ">" growth motif, high contrast.
+   Overrides CSS variables only; layout stays in base.css.
+   ========================================================= */
+
+:root {
+    --accent: #a100ff;
+    /* official Accenture purple */
+    --accent-hover: #7d00c4;
+    /* deeper purple */
+    --accent-2: #460073;
+    /* dark plum for depth */
+    --accent-soft: #f3e6ff;
+    /* light purple wash */
+    --bg: #ffffff;
+    --bg-alt: #f6f2fb;
+    --ink: #000000;
+    /* absolute black — key to the look */
+    --text: #0a0a0a;
+    --text-muted: #5a5a5a;
+    --heading-font: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    /* Neue Plak stand-in */
+    --body-font: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ---------- Global type: bold, tight, modern ---------- */
+body {
+    font-family: var(--body-font);
+    color: var(--text);
+    background: var(--bg);
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--heading-font);
+    color: var(--ink);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+}
+
+h1 {
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+}
+
+/* ---------- HERO: black base with purple energy ---------- */
+/* High-contrast black + purple = the signature Accenture feel */
+header,
+.hero {
+    background:
+        radial-gradient(circle at 85% 15%, rgba(161, 0, 255, 0.55) 0%, transparent 45%),
+        linear-gradient(135deg, #000000 0%, #1a0030 55%, #460073 100%);
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+
+header h1,
+.hero h1 {
+    color: #ffffff;
+}
+
+header a,
+.hero a {
+    color: #ffffff;
+}
+
+/* Sharp ">" growth motif after the name (brand signature) */
+header h1::after,
+.hero h1::after {
+    content: ">";
+    color: var(--accent);
+    font-weight: 900;
+    margin-left: 0.12em;
+    display: inline-block;
+    transform: translateY(-0.05em);
+}
+
+/* Subtle oversized ">" watermark in the hero corner */
+.hero::before {
+    content: ">";
+    position: absolute;
+    right: -2rem;
+    bottom: -3rem;
+    font-size: 22rem;
+    font-weight: 900;
+    line-height: 1;
+    color: rgba(161, 0, 255, 0.18);
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Hero tagline a touch brighter */
+#heroTag {
+    color: #e9d7ff;
+}
+
+/* ---------- Section headings: bold + purple bar ---------- */
+h2 {
+    position: relative;
+    padding-bottom: 10px;
+}
+
+h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 56px;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 2px;
+}
+
+/* ---------- Links ---------- */
+a {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+a:hover {
+    color: var(--accent-hover);
+}
+
+/* ---------- Buttons: solid purple, sharp corners ---------- */
+.btn,
+button.primary {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 0;
+    /* Accenture leans crisp, not rounded */
+    font-weight: 700;
+    padding: 12px 22px;
+    transition: background .2s ease, transform .2s ease;
+}
+
+.btn:hover,
+button.primary:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+}
+
+/* ---------- Company welcome banner ---------- */
+#companyWelcome {
+    background: var(--accent-soft);
+    border-left: 5px solid var(--accent);
+    color: var(--accent-2);
+    font-weight: 700;
+}
+
+/* ---------- Cards: white with purple top edge on hover ---------- */
+.card {
+    background: #ffffff;
+    border: 1px solid #ece6f5;
+    border-top: 3px solid transparent;
+    transition: border-top-color .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+
+.card:hover {
+    border-top-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(161, 0, 255, 0.12);
+}
+
+/* Alt sections get the soft purple wash */
+.section-alt {
+    background: var(--bg-alt);
+}
+
+/* ---------- Footer: black like the brand base ---------- */
+.footer {
+    background: var(--ink);
+    color: #cfcfcf;
+}
+
+.footer a {
+    color: var(--accent);
+}

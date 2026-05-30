@@ -1,0 +1,76 @@
+/* =========================================================
+   theme-tech.css
+   Modern blue skin for tech-forward companies.
+   Overrides CSS variables only; layout stays in base.css.
+   ========================================================= */
+
+:root {
+    --accent: #2563eb;
+    /* modern blue */
+    --accent-hover: #1d4ed8;
+    --accent-soft: #e8f0fe;
+    --bg: #ffffff;
+    --bg-alt: #f8fafc;
+    --text: #0f172a;
+    --text-muted: #475569;
+    --heading-font: "Inter", "Segoe UI", system-ui, sans-serif;
+    --body-font: "Inter", "Segoe UI", system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--heading-font);
+    color: var(--text);
+    letter-spacing: -0.02em;
+}
+
+/* Blue gradient hero */
+header,
+.hero {
+    background: linear-gradient(135deg, #2563eb 0%, #1e3a8a 100%);
+    color: #ffffff;
+}
+
+header a,
+.hero a {
+    color: #ffffff;
+}
+
+h2 {
+    border-bottom: 3px solid var(--accent);
+    padding-bottom: 6px;
+}
+
+a {
+    color: var(--accent);
+}
+
+a:hover {
+    color: var(--accent-hover);
+}
+
+.btn,
+button.primary {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+}
+
+.btn:hover,
+button.primary:hover {
+    background: var(--accent-hover);
+}
+
+#companyWelcome {
+    background: var(--accent-soft);
+    border-left: 4px solid var(--accent);
+    color: var(--accent-hover);
+}
+
+.section-alt,
+.card {
+    background: var(--bg-alt);
+    border-radius: 12px;
+}

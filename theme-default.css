@@ -1,0 +1,74 @@
+/* =========================================================
+   theme-pritzker.css
+   Navy/gold institutional skin — the safe default fallback.
+   Overrides CSS variables only; layout stays in base.css.
+   ========================================================= */
+
+:root {
+    --accent: #b8860b;
+    /* institutional gold */
+    --accent-hover: #946c08;
+    --accent-soft: #f7f1e1;
+    --bg: #ffffff;
+    --bg-alt: #f5f6f8;
+    --text: #14213d;
+    /* deep navy */
+    --text-muted: #4a5568;
+    --heading-font: Georgia, "Times New Roman", serif;
+    --body-font: Georgia, "Times New Roman", serif;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--heading-font);
+    color: var(--text);
+}
+
+/* Navy hero with gold accents */
+header,
+.hero {
+    background: #14213d;
+    color: #ffffff;
+}
+
+header a,
+.hero a {
+    color: var(--accent);
+}
+
+h2 {
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 6px;
+}
+
+a {
+    color: var(--accent);
+}
+
+a:hover {
+    color: var(--accent-hover);
+}
+
+.btn,
+button.primary {
+    background: var(--accent);
+    color: #14213d;
+    border: none;
+}
+
+.btn:hover,
+button.primary:hover {
+    background: var(--accent-hover);
+}
+
+#companyWelcome {
+    background: var(--accent-soft);
+    border-left: 4px solid var(--accent);
+    color: var(--text);
+}
+
+.section-alt,
+.card {
+    background: var(--bg-alt);
+}

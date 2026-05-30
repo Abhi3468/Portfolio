@@ -1,0 +1,368 @@
+/* ==========================================================
+   THEME — Google  (?company=google)
+   Palette: Blue #4285F4 · Red #DB4437 · Yellow #F4B400 · Green #0F9D58
+   ========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap');
+
+:root {
+    --g-blue: #4285F4;
+    --g-red: #DB4437;
+    --g-yellow: #F4B400;
+    --g-green: #0F9D58;
+    --g-dark: #202124;
+    --g-light: #f8f9fa;
+    --g-border: #dadce0;
+    --g-text: #3c4043;
+    --g-white: #ffffff;
+}
+
+/* ── BASE ── */
+body {
+    font-family: 'Roboto', 'Google Sans', sans-serif;
+    background: var(--g-white);
+    color: var(--g-text);
+}
+
+/* ── NAVBAR ── */
+.navbar {
+    background: var(--g-white);
+    border-bottom: 1px solid var(--g-border);
+    box-shadow: 0 1px 3px rgba(60, 64, 67, 0.1);
+}
+
+.nav-brand {
+    font-family: 'Google Sans', 'Roboto', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--g-dark);
+    text-decoration: none;
+}
+
+.nav-menu a {
+    color: var(--g-text);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.nav-menu a:hover {
+    color: var(--g-blue);
+}
+
+/* ── GOOGLE TRI-COLOR NAME ── */
+.google-name .l1 {
+    color: #4285F4;
+}
+
+/* A  — blue   */
+.google-name .l2 {
+    color: #DB4437;
+}
+
+/* b  — red    */
+.google-name .l3 {
+    color: #F4B400;
+}
+
+/* h  — yellow */
+.google-name .l4 {
+    color: #4285F4;
+}
+
+/* i  — blue   */
+.google-name .l5 {
+    color: #0F9D58;
+}
+
+/* s  — green  */
+.google-name .l6 {
+    color: #DB4437;
+}
+
+/* h  — red    */
+.google-name .l7 {
+    color: #4285F4;
+}
+
+/* e  — blue   */
+.google-name .l8 {
+    color: #0F9D58;
+}
+
+/* k  — green  */
+
+/* Hover — each letter shifts one step in cycle */
+.google-name:hover .l1 {
+    color: #DB4437;
+}
+
+.google-name:hover .l2 {
+    color: #F4B400;
+}
+
+.google-name:hover .l3 {
+    color: #0F9D58;
+}
+
+.google-name:hover .l4 {
+    color: #DB4437;
+}
+
+.google-name:hover .l5 {
+    color: #4285F4;
+}
+
+.google-name:hover .l6 {
+    color: #0F9D58;
+}
+
+.google-name:hover .l7 {
+    color: #DB4437;
+}
+
+.google-name:hover .l8 {
+    color: #4285F4;
+}
+
+/* Smooth transition */
+.google-name span {
+    display: inline-block;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.google-name:hover span {
+    transform: translateY(-2px);
+}
+
+/* ── HERO ── */
+.hero {
+    background: var(--g-white);
+    color: var(--g-dark);
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+}
+
+.hero-label {
+    color: var(--g-blue);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.hero-name {
+    font-family: 'Google Sans', sans-serif;
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    font-weight: 700;
+    color: var(--g-dark);
+    margin-bottom: 1rem;
+    line-height: 1.1;
+}
+
+.hero-subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    color: var(--g-text);
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+}
+
+.hero-tag {
+    font-size: 0.9rem;
+    color: #5f6368;
+    margin-bottom: 2.5rem;
+}
+
+/* ── BUTTONS ── */
+.btn-primary {
+    background: var(--g-blue);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 0.75rem 2rem;
+    font-weight: 500;
+    font-family: 'Google Sans', sans-serif;
+    box-shadow: 0 1px 3px rgba(66, 133, 244, 0.3);
+    transition: background 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary:hover {
+    background: #1a73e8;
+    box-shadow: 0 2px 8px rgba(66, 133, 244, 0.5);
+    color: #fff;
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--g-blue);
+    border: 1px solid var(--g-blue);
+    border-radius: 4px;
+    padding: 0.75rem 2rem;
+    font-weight: 500;
+    font-family: 'Google Sans', sans-serif;
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn-outline:hover {
+    background: #e8f0fe;
+    color: var(--g-dark);
+}
+
+/* ── SECTIONS ── */
+.section-title {
+    font-family: 'Google Sans', sans-serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    color: var(--g-dark);
+    font-weight: 700;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 4px;
+    margin: 0.5rem auto 0;
+    border-radius: 2px;
+    background: linear-gradient(to right,
+            var(--g-blue) 0% 25%,
+            var(--g-red) 25% 50%,
+            var(--g-yellow) 50% 75%,
+            var(--g-green) 75% 100%);
+}
+
+/* ── SKILL CHIPS — 4-color cycle ── */
+.chips>.chip:nth-child(4n+1) {
+    color: var(--g-blue);
+    border-color: var(--g-blue);
+    background: #e8f0fe;
+}
+
+.chips>.chip:nth-child(4n+2) {
+    color: var(--g-red);
+    border-color: var(--g-red);
+    background: #fce8e6;
+}
+
+.chips>.chip:nth-child(4n+3) {
+    color: var(--g-yellow);
+    border-color: var(--g-yellow);
+    background: #fef7e0;
+}
+
+.chips>.chip:nth-child(4n+4) {
+    color: var(--g-green);
+    border-color: var(--g-green);
+    background: #e6f4ea;
+}
+
+.chip {
+    border-radius: 16px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.3rem 0.9rem;
+    border: 1px solid;
+    display: inline-flex;
+    align-items: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.chip:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+/* ── CARDS ── */
+.skill-card,
+.project-card {
+    background: var(--g-white);
+    border: 1px solid var(--g-border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(60, 64, 67, 0.08);
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.skill-card:hover,
+.project-card:hover {
+    box-shadow: 0 4px 16px rgba(60, 64, 67, 0.15);
+    transform: translateY(-3px);
+}
+
+/* ── TIMELINE DOT — Google blue ── */
+.timeline-dot {
+    background: var(--g-blue);
+    border-color: var(--g-blue);
+}
+
+/* ── COMPANY WELCOME BANNER ── */
+.company-welcome {
+    background: linear-gradient(135deg, #e8f0fe, #fce8e6);
+    color: var(--g-blue);
+    border-left: 4px solid var(--g-blue);
+    padding: 0.6rem 1.2rem;
+    border-radius: 0 8px 8px 0;
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+/* ── CONTACT ── */
+.contact-heading {
+    position: relative;
+    display: inline-block;
+}
+
+.heading-underline {
+    display: block;
+    width: 60px;
+    height: 3px;
+    margin: 0.4rem auto 1.5rem;
+    background: linear-gradient(to right,
+            var(--g-blue) 0% 25%,
+            var(--g-red) 25% 50%,
+            var(--g-yellow) 50% 75%,
+            var(--g-green) 75% 100%);
+    border-radius: 2px;
+}
+
+.contact-links a {
+    color: var(--g-blue);
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.contact-links a:hover {
+    color: var(--g-red);
+}
+
+/* ── FOOTER ── */
+.footer {
+    background: var(--g-dark);
+    color: #9aa0a6;
+    font-size: 0.85rem;
+}
+
+/* ── BG ALT ── */
+.bg-alt {
+    background: var(--g-light);
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(var(--g-blue),
+            var(--g-red),
+            var(--g-yellow),
+            var(--g-green));
+}
+
+/* ── SELECTION ── */
+::selection {
+    background: #e8f0fe;
+    color: var(--g-blue);
+}

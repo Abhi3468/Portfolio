@@ -1,0 +1,562 @@
+/* =========================================================
+   theme-ibm.css — IBM Carbon Design System Inspired Theme
+   Brand: IBM Blue (#0f62fe) | IBM Plex font | Carbon dark
+   Load via: <link id="themeStylesheet" rel="stylesheet" href="theme-ibm.css">
+   Activate: ?company=ibm
+   ========================================================= */
+
+/* ---------- IBM GOOGLE FONTS (IBM Plex) ---------- */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700&family=IBM+Plex+Mono:wght@400;600&display=swap');
+
+/* ---------- IBM COLOR TOKENS ---------- */
+:root {
+    /* Core IBM Brand Colors */
+    --accent: #0f62fe;
+    /* IBM Blue 60 — primary action */
+    --accent-hover: #0043ce;
+    /* IBM Blue 70 — hover */
+    --accent-2: #002d9c;
+    /* IBM Blue 80 — deep emphasis */
+    --accent-soft: #edf5ff;
+    /* IBM Blue 10 — tint bg */
+    --accent-light: #a6c8ff;
+    /* IBM Blue 30 — subtle highlights */
+
+    /* IBM Neutral Grays (Carbon-style) */
+    --bg: #ffffff;
+    /* White — base bg */
+    --bg-alt: #f4f4f4;
+    /* Gray 10 — section alt */
+    --bg-dark: #161616;
+    /* Gray 100 — dark sections */
+    --ink: #161616;
+    /* Gray 100 — primary text */
+    --text: #161616;
+    --text-muted: #6f6f6f;
+    /* Gray 50 — secondary text */
+    --border: #e0e0e0;
+    /* Gray 20 — borders */
+    --border-strong: #8d8d8d;
+    /* Gray 40 — stronger borders */
+
+    /* Typography */
+    --body-font: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+    --mono-font: 'IBM Plex Mono', 'Courier New', monospace;
+}
+
+/* ---------- GLOBAL FONT OVERRIDE ---------- */
+body,
+nav,
+.btn,
+.tag,
+.section-title,
+.hero h1,
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--body-font);
+}
+
+code,
+pre,
+.mono {
+    font-family: var(--mono-font);
+}
+
+/* =========================================================
+   NAV BAR — IBM Carbon UI Shell
+   ========================================================= */
+nav {
+    background: #161616;
+    /* Carbon Gray 100 */
+    border-bottom: 1px solid #393939;
+    /* Gray 70 — subtle rule */
+    height: 48px;
+    /* Carbon standard shell height */
+}
+
+/* Override accent color on border */
+nav {
+    border-bottom-color: #393939 !important;
+}
+
+.nav-logo {
+    font-family: var(--body-font);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 0.01em;
+}
+
+/* Remove the ">" after logo — IBM doesn't use this motif */
+.nav-logo::after {
+    content: none;
+}
+
+/* IBM-style nav logo mark — horizontal rule accent */
+.nav-logo::before {
+    content: "IBM";
+    font-weight: 700;
+    color: #0f62fe;
+    margin-right: 6px;
+    letter-spacing: -0.01em;
+}
+
+.nav-links a {
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    color: #c6c6c6;
+    /* Gray 30 */
+    text-transform: none;
+    /* IBM nav: NOT all-caps */
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #ffffff;
+    border-bottom-color: #0f62fe;
+    /* IBM Blue 60 */
+}
+
+/* =========================================================
+   HERO — IBM Carbon dark expressive layout
+   ========================================================= */
+.hero {
+    background: #161616;
+    /* Carbon Gray 100 */
+    background-image:
+        linear-gradient(135deg,
+            #161616 55%,
+            #0f2040 100%);
+    border-bottom: 1px solid #393939;
+}
+
+.hero-eyebrow {
+    font-family: var(--mono-font);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    color: #78a9ff;
+    /* IBM Blue 40 */
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    color: #ffffff;
+    font-weight: 300;
+    /* IBM: light weight for hero */
+    letter-spacing: -0.02em;
+    font-size: clamp(2rem, 5.5vw, 4rem);
+}
+
+/* Highlight key word in hero with IBM blue */
+.hero h1 span,
+.hero h1 strong {
+    color: #78a9ff;
+    /* IBM Blue 40 */
+    font-weight: 600;
+}
+
+#heroTag {
+    color: #c6c6c6;
+    /* Gray 30 */
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    font-weight: 300;
+    line-height: 1.7;
+}
+
+/* =========================================================
+   BUTTONS — IBM Carbon button tokens
+   ========================================================= */
+.btn {
+    border-radius: 0;
+    /* IBM: zero-radius buttons */
+    font-family: var(--body-font);
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    /* IBM buttons are NOT all-caps */
+    padding: 13px 63px 13px 15px;
+    /* Carbon: extra right padding for arrow */
+    position: relative;
+    overflow: hidden;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+/* Carbon-style arrow → inside button */
+.btn::after {
+    content: "→";
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1rem;
+    transition: transform 0.2s ease;
+}
+
+.btn:hover::after {
+    transform: translateY(-50%) translateX(4px);
+}
+
+.btn-primary {
+    background: #0f62fe;
+    /* IBM Blue 60 */
+    color: #ffffff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background: #0043ce;
+    /* IBM Blue 70 */
+    color: #ffffff;
+    border: none;
+    transform: none;
+    /* IBM: no translateY */
+}
+
+.btn-outline {
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+}
+
+.btn-outline:hover {
+    background: #393939;
+    /* Gray 70 — subtle hover */
+    color: #ffffff;
+    border-color: #ffffff;
+    transform: none;
+}
+
+/* =========================================================
+   COMPANY WELCOME BANNER
+   ========================================================= */
+#companyWelcome {
+    background: #edf5ff;
+    /* IBM Blue 10 */
+    border-left: 4px solid #0f62fe;
+    color: #002d9c;
+    /* IBM Blue 80 */
+    font-family: var(--body-font);
+    font-size: 0.875rem;
+    font-weight: 400;
+}
+
+/* =========================================================
+   SECTION TITLES — IBM Carbon expressive style
+   ========================================================= */
+.section-title {
+    font-weight: 600;
+    color: #161616;
+    letter-spacing: -0.01em;
+}
+
+/* IBM: short bottom border in IBM Blue */
+.section-title::after {
+    background: #0f62fe;
+    width: 32px;
+    height: 3px;
+    bottom: -6px;
+}
+
+.section-subtitle {
+    font-weight: 300;
+    color: #6f6f6f;
+    font-size: 1rem;
+}
+
+/* Section alt bg — IBM Gray 10 */
+.section-alt {
+    background: #f4f4f4;
+}
+
+/* =========================================================
+   CARDS — IBM Carbon tile style
+   ========================================================= */
+.card {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    /* Gray 20 */
+    border-top: 3px solid transparent;
+    padding: 32px 24px;
+    transition:
+        background 0.15s ease,
+        border-top-color 0.15s ease,
+        box-shadow 0.15s ease;
+    border-radius: 0;
+}
+
+.card:hover {
+    background: #f4f4f4;
+    /* Gray 10 on hover — Carbon tile hover */
+    border-top-color: #0f62fe;
+    /* IBM Blue 60 */
+    transform: none;
+    /* IBM: no float effect */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.card h3 {
+    color: #161616;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.card p {
+    color: #6f6f6f;
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+
+/* =========================================================
+   SKILL TAGS — IBM Carbon tag component
+   ========================================================= */
+.tag {
+    background: #edf5ff;
+    /* IBM Blue 10 */
+    color: #0043ce;
+    /* IBM Blue 70 */
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    /* IBM tags: normal case */
+    padding: 4px 10px;
+    border-radius: 24px;
+    /* IBM: pill-shaped tags */
+    border: 1px solid #a6c8ff;
+    /* Blue 30 */
+    font-family: var(--body-font);
+}
+
+/* =========================================================
+   TIMELINE — IBM Carbon left rule style
+   ========================================================= */
+.timeline {
+    border-left: 2px solid #e0e0e0;
+    /* Gray 20 — thin rule */
+}
+
+.timeline-item::before {
+    content: "";
+    /* IBM: solid dot, not ">" */
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #0f62fe;
+    /* IBM Blue 60 */
+    position: absolute;
+    left: -34px;
+    top: 6px;
+    font-size: 0;
+    border: 2px solid #ffffff;
+    box-shadow: 0 0 0 2px #0f62fe;
+}
+
+.timeline-date {
+    font-family: var(--mono-font);
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: #0f62fe;
+    text-transform: uppercase;
+}
+
+.timeline-title {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #161616;
+}
+
+.timeline-org {
+    font-size: 0.875rem;
+    color: #6f6f6f;
+}
+
+/* =========================================================
+   CONTACT SECTION
+   ========================================================= */
+.contact-link {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: #161616;
+    border-bottom: 1px solid #e0e0e0;
+    transition: color 0.15s ease, padding-left 0.15s ease;
+}
+
+.contact-link:hover {
+    color: #0f62fe;
+    padding-left: 8px;
+}
+
+/* =========================================================
+   FOOTER — IBM Carbon dark shell
+   ========================================================= */
+.footer {
+    background: #161616;
+    /* Gray 100 */
+    color: #c6c6c6;
+    /* Gray 30 */
+    font-size: 0.75rem;
+    font-family: var(--body-font);
+    border-top: 1px solid #393939;
+}
+
+.footer a {
+    color: #78a9ff;
+    /* IBM Blue 40 */
+    font-weight: 400;
+}
+
+.footer a:hover {
+    color: #a6c8ff;
+    /* IBM Blue 30 */
+}
+
+/* =========================================================
+   SCROLL REVEAL — subtle IBM style
+   ========================================================= */
+.reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    /* IBM: smaller travel distance */
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================================================
+   IBM DARK SECTION OVERRIDE
+   Use class="section ibm-dark" for alternating dark blocks
+   ========================================================= */
+.ibm-dark {
+    background: #161616;
+    color: #ffffff;
+}
+
+.ibm-dark .section-title {
+    color: #ffffff;
+}
+
+.ibm-dark .section-subtitle {
+    color: #c6c6c6;
+}
+
+.ibm-dark .card {
+    background: #262626;
+    /* Gray 90 */
+    border-color: #393939;
+}
+
+.ibm-dark .card:hover {
+    background: #393939;
+}
+
+.ibm-dark .card h3 {
+    color: #ffffff;
+}
+
+.ibm-dark .tag {
+    background: #0f2040;
+    border-color: #0f62fe;
+    color: #a6c8ff;
+}
+
+/* =========================================================
+   IBM MONOSPACE CODE ACCENT
+   Adds a subtle monospace "typed" look to eyebrow labels
+   ========================================================= */
+.hero-eyebrow,
+.timeline-date {
+    font-family: var(--mono-font);
+}
+
+/* =========================================================
+   LINKS OVERRIDE
+   ========================================================= */
+a {
+    color: #0f62fe;
+}
+
+a:hover {
+    color: #0043ce;
+    text-decoration: underline;
+}
+
+/* =========================================================
+   IBM LOGO MARK — 8 horizontal stripes (like IBM official)
+   ========================================================= */
+
+/* =========================================================
+   IBM NAV LOGO — Option A: Clean bold text, no stripe mark
+   Matches IBM's official site typography
+   ========================================================= */
+
+.nav-logo,
+.nav-logo.brand {
+    font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+/* Kill ALL pseudo-elements from base.css / other themes */
+.nav-logo::before,
+.nav-logo::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* Hide the stripe mark — not needed in Option A */
+.ibm-logo-mark {
+    display: none !important;
+}
+
+
+/* Kill old pseudo-elements */
+.nav-logo::before,
+.nav-logo::after {
+    content: none !important;
+}
+
+/* IBM stripe container */
+.ibm-logo-mark {
+    display: grid;
+    grid-template-rows: repeat(8, 3px);
+    gap: 2px;
+    width: 32px;
+    flex-shrink: 0;
+}
+
+/* Each stripe */
+.ibm-logo-mark span {
+    display: block;
+    height: 3px;
+    background: #0f62fe;
+    /* IBM Blue 60 */
+    border-radius: 0;
+    width: 100%;
+}
+
+/* IBM 8-bar logo has gaps in stripes 3 and 6 (the "E" cutouts) */
+/* Stripes 3 and 6 are split — left portion only */
+.ibm-logo-mark span:nth-child(3),
+.ibm-logo-mark span:nth-child(6) {
+    background: linear-gradient(to right,
+            #0f62fe 60%,
+            transparent 60%,
+            transparent 100%);
+}
