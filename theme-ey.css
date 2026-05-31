@@ -1,0 +1,48 @@
+/* ── THEME: EY (Ernst & Young) ── */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --accent: #FFE600;
+    /* EY Yellow */
+    --accent-dark: #ccb800;
+    --nav-bg: #ffffff;
+    --hero-bg: #000000;
+    --hero-text: #ffffff;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+header {
+    background: var(--nav-bg);
+    border-bottom: 2px solid var(--accent);
+}
+
+.hero {
+    background: var(--hero-bg);
+    color: var(--hero-text);
+}
+
+/* EY-specific button styling: Yellow background with black text */
+.btn-primary {
+    background: var(--accent) !important;
+    border: 2px solid var(--accent) !important;
+    color: #000000 !important;
+}
+
+.btn-primary:hover {
+    background: var(--accent-dark) !important;
+    color: #000000 !important;
+}
+
+.btn-outline {
+    border: 2px solid var(--accent) !important;
+    color: var(--accent) !important;
+}
+
+.btn-outline:hover {
+    background: var(--accent) !important;
+    color: #000000 !important;
+}

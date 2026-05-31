@@ -10,8 +10,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ---------- 1. CORE BEHAVIOR ---------- */
-
-    // Mobile nav toggle
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
     if (hamburger && navLinks) {
@@ -21,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Also support navToggle / navMenu IDs (fallback)
     const navToggle = document.getElementById('navToggle');
     const navMenu = document.getElementById('navMenu');
     if (navToggle && navMenu) {
@@ -31,11 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Auto footer year
     const yearEl = document.getElementById('year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // Scroll reveal
     const revealEls = document.querySelectorAll('.reveal');
     if ('IntersectionObserver' in window && revealEls.length) {
         const io = new IntersectionObserver((entries) => {
@@ -53,14 +48,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ---------- 2. READ ?company= PARAM ---------- */
-
     const params = new URLSearchParams(window.location.search);
     const raw = params.get('company') || '';
-    const key = raw.trim().toLowerCase();
+    const key = raw.trim().toLowerCase(); // Now everything uses lowercase keys
 
 
     /* ---------- 2b. COMPANY CONTENT ---------- */
-
     const companyContent = {
         accenture: {
             name: 'Accenture',
@@ -72,10 +65,10 @@ document.addEventListener('DOMContentLoaded', () => {
             headline: 'Backend & Quality Engineer ready to build with IBM',
             tag: 'Python · Django · REST APIs · enterprise data systems'
         },
-        nordea: {
-            name: 'Nordea',
-            headline: 'Backend & Quality Engineer with banking-domain experience',
-            tag: 'Mainframe · Snowflake · SQL data validation'
+        ey: { // Corrected from EY to ey
+            name: 'EY',
+            headline: 'Backend & Quality Engineer ready to build with EY',
+            tag: 'Python · Django · REST APIs · enterprise data systems'
         },
         microsoft: {
             name: 'Microsoft',
@@ -95,7 +88,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const tagEl = document.getElementById('heroTag');
 
     if (content) {
-        // if (welcomeEl) { welcomeEl.textContent = `Hello ${content.name} team 👋`; welcomeEl.style.display = 'block'; }
         if (headlineEl) headlineEl.textContent = content.headline;
         if (tagEl) tagEl.textContent = content.tag;
     } else {
@@ -106,7 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ---------- 3. THEME MAP ---------- */
-
     const companyThemes = {
         accenture: 'accenture',
         ibm: 'ibm',
@@ -115,7 +106,8 @@ document.addEventListener('DOMContentLoaded', () => {
         nordea: 'pritzker',
         microsoft: 'tech',
         amazon: 'tech',
-        google: 'google'
+        google: 'google',
+        ey: 'ey' // Corrected from EY to ey
     };
 
     const themeFile = companyThemes[key] || 'default';
@@ -126,14 +118,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ---------- 4. GOOGLE TRI-COLOR NAME ---------- */
-
     const defaultNavEl = document.getElementById('navNameDefault');
     const defaultHeroEl = document.getElementById('heroNameDefault');
     const googleNavEl = document.getElementById('navNameGoogle');
     const googleHeroEl = document.getElementById('heroNameGoogle');
 
     if (key === 'google') {
-        // Show Google colored name
         if (defaultNavEl) defaultNavEl.style.setProperty('display', 'none', 'important');
         if (defaultHeroEl) defaultHeroEl.style.setProperty('display', 'none', 'important');
         if (googleNavEl) {
@@ -145,7 +135,6 @@ document.addEventListener('DOMContentLoaded', () => {
             googleHeroEl.style.setProperty('display', 'block', 'important');
         }
     } else {
-        // ALL other companies — lock Google spans off, show plain name
         if (defaultNavEl) defaultNavEl.style.setProperty('display', 'inline', 'important');
         if (defaultHeroEl) defaultHeroEl.style.setProperty('display', 'block', 'important');
         if (googleNavEl) googleNavEl.style.setProperty('display', 'none', 'important');
@@ -154,7 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ---------- 5. ACCENTURE ">" CURSOR TRAIL ---------- */
-
     if (key === 'accenture') {
         const TRAIL_COUNT = 8;
         const trail = [];
@@ -220,5 +208,4 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
-
-});  // end DOMContentLoaded
+});
