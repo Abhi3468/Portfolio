@@ -180,3 +180,14 @@ button.primary:hover {
 .footer a {
     color: var(--accent);
 }
+
+.btn-outline {
+    background: transparent !important;
+    border: 2px solid var(--accent) !important;
+    color: #ffffff !important;
+}
+
+.btn-outline:hover {
+    background: var(--accent) !important;
+    color: #ffffff !important;
+}

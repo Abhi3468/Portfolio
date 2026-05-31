@@ -74,3 +74,14 @@ button.primary:hover {
     background: var(--bg-alt);
     border-radius: 12px;
 }
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid #ffffff;
+    color: #ffffff !important;
+}
+
+.btn-outline:hover {
+    background: #ffffff;
+    color: #2563eb !important;
+}

@@ -139,45 +139,41 @@ nav {
 }
 
 /* ---------- BUTTONS ---------- */
+/* ── BUTTONS ── */
 .btn {
     display: inline-block;
-    padding: 13px 28px;
-    font-size: 0.9rem;
+    padding: 0.75rem 1.75rem;
+    border-radius: 4px;
     font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    border: none;
-    cursor: pointer;
-    border-radius: 0;
-    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    font-size: 0.95rem;
     text-decoration: none;
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 .btn-primary {
-    background: var(--accent, #a100ff);
-    color: #ffffff;
+    background: var(--accent, #0057ff);
+    border: 2px solid var(--accent, #0057ff);
+    color: #ffffff !important;
 }
 
 .btn-primary:hover {
-    background: #ffffff;
-    /* white bg on hover */
-    color: #000000;
-    /* BLACK text on hover ✅ */
-    border: 2px solid var(--accent, #a100ff);
-    transform: translateY(-2px);
+    background: var(--accent-dark, #0040cc);
+    border-color: var(--accent-dark, #0040cc);
+    color: #ffffff !important;
 }
 
 .btn-outline {
     background: transparent;
-    color: #ffffff;
-    border: 2px solid #ffffff;
+    border: 2px solid var(--accent, #0057ff);
+    color: var(--accent, #0057ff) !important;
 }
 
 .btn-outline:hover {
-    background: #ffffff;
-    color: #000000;
-    /* BLACK text on hover ✅ */
-    transform: translateY(-2px);
+    background: var(--accent, #0057ff);
+    color: #ffffff !important;
 }
 
 
