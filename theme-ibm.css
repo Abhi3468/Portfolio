@@ -219,16 +219,16 @@ nav {
 }
 
 .btn-outline {
-    background: transparent;
-    color: #ffffff;
-    border: 1px solid #ffffff;
+    background: #0f62fe;
+    color: #ffffff !important;
+    border: 1px solid #0f62fe;
+    font-weight: 700;
 }
 
 .btn-outline:hover {
-    background: #393939;
-    /* Gray 70 — subtle hover */
-    color: #ffffff;
-    border-color: #ffffff;
+    background: #0353e9;
+    color: #ffffff !important;
+    border-color: #0353e9;
     transform: none;
 }
 

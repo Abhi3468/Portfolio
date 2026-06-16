@@ -182,12 +182,14 @@ button.primary:hover {
 }
 
 .btn-outline {
-    background: transparent !important;
+    background: var(--accent) !important;
     border: 2px solid var(--accent) !important;
     color: #ffffff !important;
+    font-weight: 700;
 }
 
 .btn-outline:hover {
-    background: var(--accent) !important;
+    background: var(--accent-hover) !important;
+    border-color: var(--accent-hover) !important;
     color: #ffffff !important;
 }

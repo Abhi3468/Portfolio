@@ -79,6 +79,11 @@ document.addEventListener('DOMContentLoaded', () => {
             name: 'Google',
             headline: 'Backend & Quality Engineer ready to build with Google',
             tag: 'Python · Django · REST APIs · scalable systems'
+        },
+        cisco: {
+            name: 'Cisco',
+            headline: 'Backend & Quality Engineer ready to build with Cisco',
+            tag: 'Python · Django · REST APIs · network infrastructure'
         }
     };
 
@@ -107,7 +112,8 @@ document.addEventListener('DOMContentLoaded', () => {
         microsoft: 'tech',
         amazon: 'tech',
         google: 'google',
-        ey: 'ey' // Corrected from EY to ey
+        ey: 'ey', // Corrected from EY to ey
+        cisco: 'cisco'
     };
 
     const themeFile = companyThemes[key] || 'default';

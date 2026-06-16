@@ -197,19 +197,20 @@ body {
 }
 
 .btn-outline {
-    background: transparent;
-    color: var(--g-blue);
-    border: 1px solid var(--g-blue);
+    background: var(--g-blue) !important;
+    color: #ffffff !important;
+    border: 1px solid var(--g-blue) !important;
     border-radius: 4px;
     padding: 0.75rem 2rem;
-    font-weight: 500;
+    font-weight: 600;
     font-family: 'Google Sans', sans-serif;
     transition: background 0.2s, color 0.2s;
 }
 
 .btn-outline:hover {
-    background: #e8f0fe;
-    color: var(--g-dark);
+    background: #1f71e8 !important;
+    border-color: #1f71e8 !important;
+    color: #ffffff !important;
 }
 
 /* ── SECTIONS ── */

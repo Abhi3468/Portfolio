@@ -38,11 +38,14 @@ header {
 }
 
 .btn-outline {
+    background: var(--accent) !important;
     border: 2px solid var(--accent) !important;
-    color: var(--accent) !important;
+    color: #ffffff !important;
+    font-weight: 700;
 }
 
 .btn-outline:hover {
-    background: var(--accent) !important;
-    color: #000000 !important;
+    background: var(--accent-dark) !important;
+    border-color: var(--accent-dark) !important;
+    color: #ffffff !important;
 }
