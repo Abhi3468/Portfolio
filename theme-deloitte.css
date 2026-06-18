@@ -1,0 +1,350 @@
+/* =========================================================
+   theme-deloitte.css
+   Brand basis: Deloitte Green #00704A + professional black,
+   modern sans-serif, clean institutional design, high legibility.
+   Overrides CSS variables only; layout stays in base.css.
+   ========================================================= */
+
+:root {
+    --accent: #00704a;
+    /* Official Deloitte Green */
+    --accent-hover: #005a3d;
+    /* Darker Deloitte Green on hover */
+    --accent-2: #003d28;
+    /* Deep forest green for depth */
+    --accent-soft: #e8f3f0;
+    /* Light mint wash */
+    --bg: #ffffff;
+    --bg-alt: #f8f9f9;
+    --ink: #000000;
+    /* Professional black */
+    --text: #1a1a1a;
+    --text-muted: #595959;
+    --heading-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    /* Modern professional sans-serif */
+    --body-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ---------- Global typography: clean, professional, readable ---------- */
+body {
+    font-family: var(--body-font);
+    color: var(--text);
+    background: var(--bg);
+    letter-spacing: 0.3px;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--heading-font);
+    color: var(--ink);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+}
+
+h2 {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+/* ---------- HERO: Clean white base with green accent header ---------- */
+header,
+.hero {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9f9 50%, #ffffff 100%);
+    border-top: 4px solid var(--accent);
+    color: var(--text);
+    position: relative;
+    overflow: hidden;
+}
+
+header h1,
+.hero h1 {
+    color: var(--ink);
+}
+
+header a,
+.hero a {
+    color: var(--accent);
+}
+
+/* Subtle green accent mark after hero heading */
+header h1::after,
+.hero h1::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--accent);
+    margin-top: 12px;
+    border-radius: 2px;
+}
+
+/* Hero tagline */
+.hero-role {
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+#heroTag {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+/* Subtle green watermark for professional touch */
+.hero::before {
+    content: "";
+    position: absolute;
+    right: -5rem;
+    top: -3rem;
+    width: 20rem;
+    height: 20rem;
+    background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+    opacity: 0.05;
+    pointer-events: none;
+    user-select: none;
+    border-radius: 50%;
+}
+
+/* ---------- Section headings: bold with green underline ---------- */
+h2 {
+    position: relative;
+    padding-bottom: 12px;
+}
+
+h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 1px;
+}
+
+/* ---------- Navigation: clean and professional ---------- */
+nav {
+    background: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.nav-logo {
+    color: var(--ink);
+}
+
+.nav-links a {
+    color: var(--text);
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+/* ---------- Links: Deloitte Green ---------- */
+a {
+    color: var(--accent);
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--accent-hover);
+}
+
+/* ---------- Buttons: Deloitte Green with professional styling ---------- */
+.btn,
+button.primary {
+    background: var(--accent);
+    color: #ffffff;
+    border: none;
+    border-radius: 3px;
+    /* Professional subtle radius */
+    font-weight: 600;
+    padding: 12px 24px;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
+}
+
+.btn:hover,
+button.primary:hover {
+    background: var(--accent-hover);
+    box-shadow: 0 2px 8px rgba(0, 112, 74, 0.2);
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: #ffffff !important;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--accent);
+    color: var(--accent) !important;
+}
+
+.btn-outline:hover {
+    background: var(--accent-soft);
+    border-color: var(--accent-hover);
+    color: var(--accent-hover) !important;
+}
+
+/* ---------- Company welcome banner ---------- */
+#companyWelcome {
+    background: var(--accent-soft);
+    border-left: 4px solid var(--accent);
+    color: var(--text);
+    font-weight: 600;
+    border-radius: 2px;
+}
+
+/* ---------- Section backgrounds ---------- */
+.section-alt,
+.card {
+    background: var(--bg-alt);
+    border-radius: 4px;
+}
+
+.card {
+    border: 1px solid #e8e8e8;
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 4px 12px rgba(0, 112, 74, 0.08);
+}
+
+/* ---------- Code and pre blocks ---------- */
+code,
+pre {
+    background: var(--bg-alt);
+    border: 1px solid #e0e0e0;
+    color: var(--text);
+}
+
+/* ---------- Form elements ---------- */
+input,
+textarea,
+select {
+    border: 1px solid #d0d0d0;
+    border-radius: 3px;
+    padding: 8px 12px;
+    font-family: var(--body-font);
+    font-size: 0.95rem;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(0, 112, 74, 0.1);
+}
+
+/* ---------- Badges and tags ---------- */
+.badge,
+.tag {
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 4px 10px;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+}
+
+/* ---------- Horizontal rules and dividers ---------- */
+hr {
+    border: none;
+    height: 1px;
+    background: #e8e8e8;
+}
+
+/* ---------- Footer ---------- */
+footer {
+    background: #f8f9f9;
+    border-top: 1px solid #e0e0e0;
+    color: var(--text-muted);
+}
+
+footer a {
+    color: var(--accent);
+}
+
+footer a:hover {
+    color: var(--accent-hover);
+}
+
+/* ---------- Responsive adjustments ---------- */
+@media (max-width: 768px) {
+    h1 {
+        font-size: clamp(1.8rem, 4vw, 2.6rem);
+    }
+
+    h2 {
+        font-size: clamp(1.3rem, 3vw, 1.8rem);
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+/* ---------- Accessibility improvements ---------- */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ---------- Dark mode support (optional) ---------- */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #1a1a1a;
+        --bg-alt: #2a2a2a;
+        --text: #e0e0e0;
+        --text-muted: #a0a0a0;
+        --ink: #ffffff;
+    }
+
+    header,
+    .hero {
+        background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%);
+    }
+
+    nav {
+        background: #1a1a1a;
+        border-bottom-color: #333333;
+    }
+
+    code,
+    pre {
+        background: #2a2a2a;
+        border-color: #333333;
+    }
+
+    input,
+    textarea,
+    select {
+        background: #2a2a2a;
+        border-color: #444444;
+        color: #e0e0e0;
+    }
+
+    footer {
+        background: #2a2a2a;
+        border-top-color: #333333;
+    }
+}

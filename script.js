@@ -84,6 +84,11 @@ document.addEventListener('DOMContentLoaded', () => {
             name: 'Cisco',
             headline: 'Backend & Quality Engineer ready to build with Cisco',
             tag: 'Python · Django · REST APIs · network infrastructure'
+        },
+        deloitte: {
+            name: 'Deloitte',
+            headline: 'Backend & Quality Engineer ready to build with Deloitte',
+            tag: 'Python · Django · REST APIs · enterprise data solutions'
         }
     };
 
@@ -106,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const companyThemes = {
         accenture: 'accenture',
         ibm: 'ibm',
-        deloitte: 'pritzker',
+        deloitte: 'deloitte',
         jpmorgan: 'pritzker',
         nordea: 'pritzker',
         microsoft: 'tech',
