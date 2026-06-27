@@ -92,17 +92,11 @@
         const tagEl = document.getElementById('heroTag');
 
         if (content) {
-            if (welcomeEl) {
-                welcomeEl.textContent = `Personalized for ${content.name}`;
-                welcomeEl.style.display = 'inline-block';
-            }
-            if (headlineEl) headlineEl.textContent = content.headline;
-            if (tagEl) tagEl.textContent = content.tag;
+            if (welcomeEl) welcomeEl.style.display = 'none';
+            if (headlineEl) headlineEl.textContent = 'Software Engineer — Backend & Quality Engineering';
+            if (tagEl) tagEl.textContent = 'Python · Django · REST APIs · SQL · CI/CD';
         } else {
-            if (welcomeEl) {
-                welcomeEl.textContent = '';
-                welcomeEl.style.display = 'none';
-            }
+            if (welcomeEl) welcomeEl.style.display = 'none';
             if (headlineEl) headlineEl.textContent = 'Software Engineer — Backend & Quality Engineering';
             if (tagEl) tagEl.textContent = 'Python · Django · REST APIs · SQL · CI/CD';
         }
