@@ -132,6 +132,30 @@ nav {
     margin-bottom: 32px;
 }
 
+.hero-headline {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--hero-sub);
+    margin-bottom: 10px;
+}
+
+.hero-tag {
+    font-size: 1rem;
+    color: var(--hero-sub);
+    margin-bottom: 32px;
+}
+
+.company-welcome {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--accent-text);
+    padding: 6px 16px;
+    border-radius: var(--radius);
+    font-size: .85rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
 .btns {
     display: flex;
     gap: 16px;
