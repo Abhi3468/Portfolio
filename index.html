@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abhishek R — Software Engineer</title>
 
+    <link rel="stylesheet" href="base.css">
     <script>
         (function () {
             const params = new URLSearchParams(window.location.search);
@@ -17,82 +18,9 @@
                 microsoft: 'tech',
                 google: 'google',
                 ey: 'ey',
-                cisco: 'cisco',
-                visa: 'visa'
+                cisco: 'cisco'
             };
             const themeFile = companyThemes[company] || 'default';
-
-            const themeValues = {
-                default: {
-                    accent: '#0057ff', accentDark: '#0040cc', accentHover: '#946c08', accentSoft: '#f7f1e1',
-                    bg: '#ffffff', altBg: '#f5f6f8', text: '#14213d', muted: '#4a5568', heading: '#14213d',
-                    heroBg: '#14213d', heroText: '#ffffff', heroSub: '#d0dfff', navBg: 'rgba(255,255,255,0.84)',
-                    navLink: '#14213d', cardBg: '#ffffff', border: '#eceef3', shadow: '0 8px 24px rgba(0,0,0,0.08)',
-                    tagBg: '#f4f6f8', tagText: '#1f2937', footerBg: '#0f172a', footerText: '#f8fafc'
-                },
-                accenture: {
-                    accent: '#a100ff', accentDark: '#7d00c4', accentHover: '#7d00c4', accentSoft: '#f3e6ff',
-                    bg: '#ffffff', altBg: '#f6f2fb', text: '#0a0a0a', muted: '#5a5a5a', heading: '#000000',
-                    heroBg: '#000000', heroText: '#ffffff', heroSub: '#e9d7ff', navBg: 'rgba(0,0,0,0.9)',
-                    navLink: '#ffffff', cardBg: '#ffffff', border: '#ece6f5', shadow: '0 12px 30px rgba(161,0,255,0.12)',
-                    tagBg: '#f3e6ff', tagText: '#460073', footerBg: '#000000', footerText: '#cfcfcf'
-                },
-                visa: {
-                    accent: '#f7b500', accentDark: '#d89c00', accentHover: '#ffd04d', accentSoft: '#fff4d6',
-                    bg: '#ffffff', altBg: '#f7f8fb', text: '#14213d', muted: '#4b5563', heading: '#14213d',
-                    heroBg: '#14213d', heroText: '#ffffff', heroSub: '#f2dfaa', navBg: 'rgba(20,33,61,0.94)',
-                    navLink: '#ffffff', cardBg: '#ffffff', border: '#e5e7eb', shadow: '0 10px 24px rgba(20,33,61,0.16)',
-                    tagBg: '#fff4d6', tagText: '#8a5f00', footerBg: '#0f172a', footerText: '#f8fafc'
-                },
-                google: {
-                    accent: '#1a73e8', accentDark: '#174ea6', accentHover: '#185abc', accentSoft: '#e8f0fe',
-                    bg: '#ffffff', altBg: '#f8fafc', text: '#202124', muted: '#5f6368', heading: '#202124',
-                    heroBg: '#ffffff', heroText: '#202124', heroSub: '#5f6368', navBg: 'rgba(255,255,255,0.92)',
-                    navLink: '#202124', cardBg: '#ffffff', border: '#e8eaed', shadow: '0 8px 24px rgba(32,33,36,0.08)',
-                    tagBg: '#f1f3f4', tagText: '#174ea6', footerBg: '#f8fafc', footerText: '#5f6368'
-                },
-                ibm: {
-                    accent: '#0f62fe', accentDark: '#0043ce', accentHover: '#002d9c', accentSoft: '#e8f2ff',
-                    bg: '#ffffff', altBg: '#f7f8fa', text: '#161616', muted: '#525252', heading: '#161616',
-                    heroBg: '#161616', heroText: '#ffffff', heroSub: '#d0e2ff', navBg: 'rgba(22,22,22,0.92)',
-                    navLink: '#ffffff', cardBg: '#ffffff', border: '#e0e0e0', shadow: '0 10px 24px rgba(22,22,22,0.12)',
-                    tagBg: '#e8f2ff', tagText: '#0043ce', footerBg: '#161616', footerText: '#f4f4f4'
-                },
-                cisco: {
-                    accent: '#049fd9', accentDark: '#0377a8', accentHover: '#025d81', accentSoft: '#e8f8ff',
-                    bg: '#ffffff', altBg: '#f5fbff', text: '#0f172a', muted: '#475569', heading: '#0f172a',
-                    heroBg: '#0b1f3a', heroText: '#ffffff', heroSub: '#c7ebff', navBg: 'rgba(11,31,58,0.94)',
-                    navLink: '#ffffff', cardBg: '#ffffff', border: '#dceaf3', shadow: '0 10px 24px rgba(4,30,65,0.12)',
-                    tagBg: '#e8f8ff', tagText: '#0377a8', footerBg: '#0b1f3a', footerText: '#dceaf3'
-                },
-                deloitte: {
-                    accent: '#00a3e0', accentDark: '#007ead', accentHover: '#00678a', accentSoft: '#e6f8ff',
-                    bg: '#ffffff', altBg: '#f5fbff', text: '#1f2937', muted: '#4b5563', heading: '#0f172a',
-                    heroBg: '#0f172a', heroText: '#ffffff', heroSub: '#dceaf3', navBg: 'rgba(15,23,42,0.92)',
-                    navLink: '#ffffff', cardBg: '#ffffff', border: '#dceaf3', shadow: '0 10px 24px rgba(15,23,42,0.12)',
-                    tagBg: '#e6f8ff', tagText: '#007ead', footerBg: '#0f172a', footerText: '#f8fafc'
-                },
-                microsoft: {
-                    accent: '#2563eb', accentDark: '#1d4ed8', accentHover: '#1e40af', accentSoft: '#e8f0fe',
-                    bg: '#ffffff', altBg: '#f8fafc', text: '#0f172a', muted: '#475569', heading: '#0f172a',
-                    heroBg: '#0f172a', heroText: '#ffffff', heroSub: '#dbeafe', navBg: 'rgba(15,23,42,0.92)',
-                    navLink: '#ffffff', cardBg: '#ffffff', border: '#e2e8f0', shadow: '0 10px 24px rgba(15,23,42,0.12)',
-                    tagBg: '#e8f0fe', tagText: '#1d4ed8', footerBg: '#0f172a', footerText: '#f8fafc'
-                },
-                ey: {
-                    accent: '#f0b429', accentDark: '#c48a00', accentHover: '#e5a400', accentSoft: '#fff6db',
-                    bg: '#ffffff', altBg: '#fcfaf3', text: '#1f2937', muted: '#6b7280', heading: '#111827',
-                    heroBg: '#111827', heroText: '#ffffff', heroSub: '#fef3c7', navBg: 'rgba(17,24,39,0.94)',
-                    navLink: '#ffffff', cardBg: '#ffffff', border: '#ede7d7', shadow: '0 10px 24px rgba(17,24,39,0.12)',
-                    tagBg: '#fff6db', tagText: '#9a6a00', footerBg: '#111827', footerText: '#f9fafb'
-                }
-            };
-
-            const selectedTheme = themeValues[company] || themeValues.default;
-            const style = document.createElement('style');
-            style.innerHTML = `:root { --accent:${selectedTheme.accent}; --accent-dark:${selectedTheme.accentDark}; --accent-hover:${selectedTheme.accentHover}; --accent-soft:${selectedTheme.accentSoft}; --bg:${selectedTheme.bg}; --alt-bg:${selectedTheme.altBg}; --text:${selectedTheme.text}; --muted:${selectedTheme.muted}; --heading:${selectedTheme.heading}; --hero-bg:${selectedTheme.heroBg}; --hero-text:${selectedTheme.heroText}; --hero-sub:${selectedTheme.heroSub}; --nav-bg:${selectedTheme.navBg}; --nav-link:${selectedTheme.navLink}; --card-bg:${selectedTheme.cardBg}; --border:${selectedTheme.border}; --shadow:${selectedTheme.shadow}; --tag-bg:${selectedTheme.tagBg}; --tag-text:${selectedTheme.tagText}; --footer-bg:${selectedTheme.footerBg}; --footer-text:${selectedTheme.footerText}; }`;
-            document.head.appendChild(style);
-
             const link = document.createElement('link');
             link.rel = 'stylesheet';
             link.id = 'themeStylesheet';
@@ -100,7 +28,6 @@
             document.head.appendChild(link);
         })();
     </script>
-    <link rel="stylesheet" href="base.css">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Inter:wght@400;600;700&display=swap"
@@ -185,8 +112,8 @@
 
             <!-- THIS is the fixed subtitle line — NEVER touched by JS, always static -->
             <p class="hero-role">Software Engineer · Backend &amp; Quality Engineering</p>
-            <p class="hero-headline">Software Engineer — Backend &amp; Quality Engineering</p>
-            <p class="hero-tag">Python · Django · REST APIs · SQL · CI/CD</p>
+            <p class="hero-headline" id="heroHeadline">Software Engineer — Backend &amp; Quality Engineering</p>
+            <p class="hero-tag" id="heroTag">Python · Django · REST APIs · SQL · CI/CD</p>
 
             <div class="btns">
                 <a href="#projects" class="btn btn-primary">View Projects</a>
