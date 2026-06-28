@@ -83,6 +83,16 @@
                 name: 'Visa',
                 headline: 'Backend & Quality Engineer ready to build with Visa',
                 tag: 'Python · Django · REST APIs · secure digital payments'
+            },
+            infosys: {
+                name: 'Infosys',
+                headline: 'Backend & Quality Engineer ready to build with Infosys',
+                tag: 'Python · Django · REST APIs · AI-first digital transformation'
+            },
+            capgemini: {
+                name: 'Capgemini',
+                headline: 'Backend & Quality Engineer ready to build with Capgemini',
+                tag: 'Python · Django · REST APIs · digital transformation'
             }
         };
 
@@ -113,7 +123,9 @@
             google: 'google',
             ey: 'ey',
             cisco: 'cisco',
-            visa: 'visa'
+            visa: 'visa',
+            infosys: 'infosys',
+            capgemini: 'capgemini'
         };
 
         const themeFile = companyThemes[key] || 'default';

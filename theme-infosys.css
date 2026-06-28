@@ -191,9 +191,9 @@ nav a:hover {
 /* ============ BUTTONS ============ */
 button,
 .btn {
-    background: var(--primary-blue);
-    color: #ffffff;
-    border: none;
+    background: #0066cc !important;
+    color: #ffffff !important;
+    border: none !important;
     padding: 0.8rem 1.8rem;
     border-radius: 6px;
     font-weight: 600;
@@ -202,16 +202,40 @@ button,
     font-size: 0.95rem;
 }
 
+.btn-primary,
+button.btn-primary,
+a.btn-primary {
+    background: #0066cc !important;
+    border: none !important;
+    color: #ffffff !important;
+}
+
 button:hover,
-.btn:hover {
-    background: var(--primary-blue-dark);
+.btn:hover,
+a.btn:hover {
+    background: #004399 !important;
+    color: #ffffff !important;
     transform: translateY(-2px);
     box-shadow: 0 6px 16px rgba(0, 102, 204, 0.25);
 }
 
 button:active,
-.btn:active {
+.btn:active,
+a.btn:active {
     transform: translateY(0);
+}
+
+.btn-primary:hover,
+button.btn-primary:hover,
+a.btn-primary:hover {
+    background: #004399 !important;
+    color: #ffffff !important;
+}
+
+.btn-primary:hover,
+button.btn-primary:hover {
+    background: #004399 !important;
+    color: #ffffff !important;
 }
 
 /* ============ CARDS & SECTIONS ============ */
