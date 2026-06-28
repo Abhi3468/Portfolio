@@ -1,0 +1,309 @@
+/* =========================================================
+   theme-capgemini.css
+   Capgemini Official Brand — Modern Tech-Forward Design
+   Primary: Deep Blue #0051BA | Accent: Cyan #00D9FF
+   Dark theme with bright accents, clean modern aesthetic.
+   Overrides CSS variables only; layout stays in base.css.
+   ========================================================= */
+
+:root {
+    /* Capgemini brand colors */
+    --accent: #00d9ff;
+    /* Bright cyan accent */
+    --accent-dark: #0099cc;
+    /* Darker cyan for hover */
+    --accent-hover: #00a8d4;
+    --accent-soft: #e0f7fa;
+    /* Light cyan wash */
+    
+    /* Capgemini primary blue */
+    --primary-blue: #0051ba;
+    --primary-blue-dark: #003a85;
+    --primary-blue-light: #1a7bc9;
+    
+    /* Dark theme backgrounds */
+    --bg: #0f1419;
+    /* Very dark background */
+    --bg-alt: #1a1f2e;
+    /* Slightly lighter for alternates */
+    
+    /* Text colors */
+    --text: #ffffff;
+    /* White text for high contrast */
+    --text-muted: #a0a8b8;
+    /* Muted gray text */
+    
+    /* Fonts */
+    --heading-font: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    --body-font: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ============ GLOBAL STYLES ============ */
+body {
+    font-family: var(--body-font);
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--heading-font);
+    color: var(--text);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+h1 {
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    color: #ffffff;
+}
+
+h2 {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 0.8rem;
+}
+
+h3 {
+    font-size: 1.3rem;
+    color: var(--text);
+}
+
+/* ============ HERO SECTION ============ */
+header,
+.hero {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 50%, #0a0f1a 100%);
+    background-attachment: fixed;
+    color: var(--text);
+    padding: 6rem 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+header::before,
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(0, 217, 255, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+    animation: float 20s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) translateX(0px);
+    }
+    50% {
+        transform: translateY(20px) translateX(-10px);
+    }
+}
+
+header h1,
+.hero h1 {
+    color: #ffffff;
+    position: relative;
+    z-index: 1;
+}
+
+header .kicker,
+.hero .kicker {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+/* ============ LINKS ============ */
+a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+a:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+}
+
+a:hover::after {
+    width: 100%;
+}
+
+/* ============ NAVIGATION ============ */
+nav {
+    background: rgba(15, 20, 25, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 217, 255, 0.1);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav a {
+    color: var(--text);
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: var(--accent);
+}
+
+/* ============ BUTTONS ============ */
+button,
+.btn {
+    background: var(--accent);
+    color: var(--primary-blue-dark);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+button:hover,
+.btn:hover {
+    background: #ffffff;
+    color: var(--primary-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 217, 255, 0.3);
+}
+
+/* ============ CARDS & SECTIONS ============ */
+.card,
+.section-content {
+    background: var(--bg-alt);
+    border: 1px solid rgba(0, 217, 255, 0.1);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    margin-bottom: 1.5rem;
+}
+
+.card:hover,
+.section-content:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 16px rgba(0, 217, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+/* ============ ACCENT ELEMENTS ============ */
+.accent-bar {
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--primary-blue));
+    margin: 1rem 0;
+    border-radius: 2px;
+}
+
+.badge {
+    display: inline-block;
+    background: rgba(0, 217, 255, 0.15);
+    color: var(--accent);
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid var(--accent);
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* ============ SKILL BARS ============ */
+.skill-bar {
+    background: var(--bg-alt);
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 0.5rem;
+}
+
+.skill-bar-fill {
+    background: linear-gradient(90deg, var(--accent), var(--primary-blue-light));
+    height: 100%;
+    transition: width 0.6s ease;
+    border-radius: 4px;
+}
+
+/* ============ FOOTER ============ */
+footer {
+    background: var(--bg-alt);
+    border-top: 1px solid rgba(0, 217, 255, 0.1);
+    color: var(--text-muted);
+    padding: 2rem;
+    text-align: center;
+    margin-top: 4rem;
+}
+
+footer a {
+    color: var(--accent);
+}
+
+footer a:hover {
+    color: #ffffff;
+}
+
+/* ============ HIGHLIGHT & EMPHASIS ============ */
+::selection {
+    background: var(--accent);
+    color: var(--primary-blue-dark);
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-blue-light);
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    header,
+    .hero {
+        padding: 4rem 1.5rem;
+    }
+}

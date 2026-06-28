@@ -1,0 +1,392 @@
+/* =========================================================
+   theme-infosys.css
+   Infosys Official Brand — AI-First Digital Transformation
+   Primary: Blue #0066CC | Accent: Cyan #00D9FF | Modern Light Theme
+   Clean, tech-forward design with vibrant gradient accents.
+   Overrides CSS variables only; layout stays in base.css.
+   ========================================================= */
+
+:root {
+    /* Infosys brand colors */
+    --accent: #00d9ff;
+    /* Bright cyan accent — signature Infosys tech color */
+    --accent-dark: #0099cc;
+    /* Darker cyan for hover states */
+    --accent-hover: #00b4d8;
+    --accent-soft: #e0f7fa;
+    /* Very light cyan wash for backgrounds */
+    
+    /* Infosys primary blue */
+    --primary-blue: #0066cc;
+    --primary-blue-dark: #004399;
+    --primary-blue-light: #3399ff;
+    
+    /* Light theme backgrounds */
+    --bg: #f5f5f7;
+    /* Very light background */
+    --bg-alt: #ffffff;
+    /* White for cards and alternates */
+    
+    /* Text colors */
+    --text: #1a2a4a;
+    /* Dark navy text */
+    --text-muted: #6b7280;
+    /* Medium gray text */
+    
+    /* Fonts */
+    --heading-font: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    --body-font: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ============ GLOBAL STYLES ============ */
+body {
+    font-family: var(--body-font);
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.65;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--heading-font);
+    color: var(--text);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+h1 {
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    color: var(--primary-blue);
+    line-height: 1.1;
+}
+
+h2 {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    color: var(--primary-blue-dark);
+    margin-bottom: 1.5rem;
+    border-bottom: 3px solid var(--accent);
+    padding-bottom: 0.8rem;
+}
+
+h3 {
+    font-size: 1.3rem;
+    color: var(--primary-blue);
+}
+
+p {
+    color: var(--text);
+}
+
+/* ============ HERO SECTION ============ */
+header,
+.hero {
+    background: linear-gradient(135deg, #f5f5f7 0%, #ffffff 50%, #e8f2ff 100%);
+    position: relative;
+    overflow: hidden;
+    padding: 5rem 2rem;
+    color: var(--text);
+}
+
+header::before,
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: linear-gradient(135deg, 
+        rgba(0, 102, 204, 0.08) 0%, 
+        rgba(0, 217, 255, 0.06) 50%, 
+        transparent 100%);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: pulse-glow 15s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(20px, -10px) scale(1.05);
+    }
+}
+
+header h1,
+.hero h1 {
+    color: var(--primary-blue);
+    position: relative;
+    z-index: 1;
+}
+
+header .kicker,
+.hero .kicker {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+    background: rgba(0, 217, 255, 0.1);
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+}
+
+/* ============ LINKS ============ */
+a {
+    color: var(--primary-blue);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    font-weight: 500;
+}
+
+a:hover {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+}
+
+a:hover::after {
+    width: 100%;
+}
+
+/* ============ NAVIGATION ============ */
+nav {
+    background: rgba(245, 245, 247, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 102, 204, 0.1);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+nav a {
+    color: var(--text);
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: var(--primary-blue);
+}
+
+/* ============ BUTTONS ============ */
+button,
+.btn {
+    background: var(--primary-blue);
+    color: #ffffff;
+    border: none;
+    padding: 0.8rem 1.8rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+button:hover,
+.btn:hover {
+    background: var(--primary-blue-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 102, 204, 0.25);
+}
+
+button:active,
+.btn:active {
+    transform: translateY(0);
+}
+
+/* ============ CARDS & SECTIONS ============ */
+.card,
+.section-content {
+    background: var(--bg-alt);
+    border: 1px solid rgba(0, 102, 204, 0.1);
+    border-radius: 8px;
+    padding: 1.8rem;
+    transition: all 0.3s ease;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.card:hover,
+.section-content:hover {
+    border-color: var(--accent);
+    box-shadow: 0 8px 20px rgba(0, 102, 204, 0.12);
+    transform: translateY(-4px);
+}
+
+.card h3,
+.section-content h3 {
+    margin-top: 0;
+    color: var(--primary-blue);
+}
+
+/* ============ ACCENT ELEMENTS ============ */
+.accent-bar {
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-blue), var(--accent));
+    margin: 1.5rem 0;
+    border-radius: 2px;
+}
+
+.badge {
+    display: inline-block;
+    background: rgba(0, 217, 255, 0.12);
+    color: var(--primary-blue-dark);
+    padding: 0.5rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    border: 1px solid var(--accent);
+    margin-right: 0.6rem;
+    margin-bottom: 0.6rem;
+    transition: all 0.3s ease;
+}
+
+.badge:hover {
+    background: rgba(0, 102, 204, 0.12);
+    border-color: var(--primary-blue);
+    transform: scale(1.05);
+}
+
+/* ============ SKILL BARS ============ */
+.skill-bar {
+    background: rgba(0, 102, 204, 0.08);
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 0.6rem;
+}
+
+.skill-bar-fill {
+    background: linear-gradient(90deg, var(--accent), var(--primary-blue-light));
+    height: 100%;
+    transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border-radius: 4px;
+    box-shadow: 0 0 8px rgba(0, 217, 255, 0.4);
+}
+
+/* ============ FOOTER ============ */
+footer {
+    background: var(--text);
+    color: #ffffff;
+    padding: 3rem 2rem;
+    text-align: center;
+    margin-top: 4rem;
+    border-top: 1px solid rgba(0, 102, 204, 0.1);
+}
+
+footer a {
+    color: var(--accent);
+}
+
+footer a:hover {
+    color: #ffffff;
+}
+
+footer p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* ============ HIGHLIGHT & EMPHASIS ============ */
+::selection {
+    background: var(--accent);
+    color: var(--primary-blue-dark);
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-blue);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+}
+
+/* ============ FORM ELEMENTS ============ */
+input,
+textarea {
+    border: 1px solid rgba(0, 102, 204, 0.2);
+    border-radius: 6px;
+    padding: 0.8rem 1rem;
+    font-family: var(--body-font);
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    header,
+    .hero {
+        padding: 3.5rem 1.5rem;
+    }
+    
+    .card,
+    .section-content {
+        padding: 1.2rem;
+    }
+    
+    header::before,
+    .hero::before {
+        width: 400px;
+        height: 400px;
+        top: -20%;
+        right: -15%;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    h2 {
+        font-size: 1.2rem;
+    }
+    
+    header,
+    .hero {
+        padding: 2.5rem 1rem;
+    }
+}
