@@ -1,0 +1,211 @@
+/* =========================================================
+   theme-amazon.css
+   Amazon-inspired portfolio theme for ?company=amazon.
+   Palette: Amazon orange, deep ink navy, clean marketplace neutrals.
+   ========================================================= */
+
+:root {
+    --accent: #ff9900;
+    --accent-dark: #e47911;
+    --accent-hover: #c96400;
+    --accent-soft: #fff4df;
+    --accent-text: #111827;
+    --bg: #ffffff;
+    --alt-bg: #f3f4f6;
+    --bg-alt: #f3f4f6;
+    --card-bg: #ffffff;
+    --text: #1f2937;
+    --muted: #5f6b7a;
+    --text-muted: #5f6b7a;
+    --heading: #111827;
+    --hero-bg: #131921;
+    --hero-text: #ffffff;
+    --hero-sub: #d5dbdb;
+    --nav-bg: rgba(19, 25, 33, 0.96);
+    --nav-link: #eef2f6;
+    --border: #d5d9d9;
+    --tag-bg: #fff4df;
+    --tag-text: #7a4100;
+    --footer-bg: #131921;
+    --footer-text: #d5dbdb;
+    --radius: 6px;
+    --shadow: 0 14px 30px rgba(17, 24, 39, 0.12);
+    --font-head: "Amazon Ember", "Inter", "Segoe UI", Arial, sans-serif;
+    --font-body: "Amazon Ember", "Inter", "Segoe UI", Arial, sans-serif;
+    --heading-font: var(--font-head);
+    --body-font: var(--font-body);
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text);
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-head);
+    color: var(--heading);
+}
+
+nav {
+    background: var(--nav-bg);
+    border-bottom: 3px solid #232f3e;
+}
+
+.brand,
+.nav-links a,
+.hamburger span {
+    color: #ffffff;
+}
+
+.nav-links a:hover,
+a:hover {
+    color: var(--accent);
+}
+
+.hero {
+    background:
+        radial-gradient(circle at 82% 20%, rgba(255, 153, 0, 0.22), transparent 32%),
+        linear-gradient(135deg, #131921 0%, #232f3e 68%, #37475a 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    right: clamp(24px, 8vw, 120px);
+    bottom: 38px;
+    width: clamp(140px, 22vw, 280px);
+    height: clamp(40px, 7vw, 78px);
+    border-bottom: 8px solid var(--accent);
+    border-radius: 0 0 55% 55%;
+    transform: rotate(-8deg);
+    opacity: 0.52;
+    pointer-events: none;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1,
+.contact h2 {
+    color: #ffffff;
+}
+
+.hero-role,
+.hero-headline,
+.hero-tag {
+    color: var(--hero-sub);
+}
+
+.kicker {
+    color: var(--accent);
+    font-weight: 800;
+}
+
+h2 {
+    position: relative;
+    padding-bottom: 10px;
+}
+
+h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 64px;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 999px;
+}
+
+.btn,
+.btn-primary,
+button.primary {
+    background: var(--accent) !important;
+    border: 2px solid var(--accent) !important;
+    color: #111827 !important;
+    border-radius: 4px;
+    box-shadow: 0 5px 14px rgba(255, 153, 0, 0.2);
+}
+
+.btn:hover,
+.btn-primary:hover,
+button.primary:hover {
+    background: var(--accent-dark) !important;
+    border-color: var(--accent-dark) !important;
+    color: #111827 !important;
+    transform: translateY(-2px);
+}
+
+.facts,
+.skill-card,
+.proj-card,
+.cert {
+    border-radius: var(--radius);
+    box-shadow: 0 1px 2px rgba(17, 24, 39, 0.04);
+}
+
+.skill-card:hover,
+.proj-card:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow);
+}
+
+.chip {
+    background: #f7fafa;
+}
+
+.tag {
+    border: 1px solid rgba(255, 153, 0, 0.25);
+    font-weight: 700;
+}
+
+.timeline {
+    border-left-color: var(--accent);
+}
+
+.timeline li::before {
+    background: var(--accent);
+}
+
+.contact {
+    background: linear-gradient(135deg, #232f3e 0%, #131921 100%);
+}
+
+.contact-links a {
+    color: #ffffff;
+}
+
+.contact-links a:hover {
+    color: var(--accent);
+}
+
+footer {
+    background: var(--footer-bg);
+    color: var(--footer-text);
+}
+
+::selection {
+    background: var(--accent);
+    color: #111827;
+}
+
+@media (max-width: 640px) {
+    .nav-links {
+        background: #131921;
+        border-bottom-color: var(--accent);
+    }
+
+    .hero::after {
+        opacity: 0.28;
+        right: 18px;
+        bottom: 24px;
+    }
+}

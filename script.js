@@ -64,6 +64,11 @@
                 headline: 'Backend & Quality Engineer ready to build with Microsoft',
                 tag: 'Python · Django · REST APIs · CI/CD'
             },
+            amazon: {
+                name: 'Amazon',
+                headline: 'Backend & Quality Engineer ready to build with Amazon',
+                tag: 'Python · Django · REST APIs · scalable customer-first systems'
+            },
             google: {
                 name: 'Google',
                 headline: 'Backend & Quality Engineer ready to build with Google',
@@ -93,6 +98,11 @@
                 name: 'Capgemini',
                 headline: 'Backend & Quality Engineer ready to build with Capgemini',
                 tag: 'Python · Django · REST APIs · digital transformation'
+            },
+            oracle: {
+                name: 'Oracle',
+                headline: 'Backend & Quality Engineer ready to build with Oracle',
+                tag: 'Python · Django · REST APIs · enterprise database systems'
             }
         };
 
@@ -119,13 +129,14 @@
             jpmorgan: 'pritzker',
             nordea: 'pritzker',
             microsoft: 'tech',
-            amazon: 'tech',
+            amazon: 'amazon',
             google: 'google',
             ey: 'ey',
             cisco: 'cisco',
             visa: 'visa',
             infosys: 'infosys',
-            capgemini: 'capgemini'
+            capgemini: 'capgemini',
+            oracle: 'oracle'
         };
 
         const themeFile = companyThemes[key] || 'default';
