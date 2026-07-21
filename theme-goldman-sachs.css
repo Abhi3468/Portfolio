@@ -1,8 +1,5 @@
 /* =========================================================
    theme-goldman-sachs.css
-   Goldman Sachs — Dark Navy / Gold institutional theme.
-   Brand colors: Navy #0033A0, Gold #C8A951, White #FFFFFF, Dark #000000
-   Overrides CSS variables only; layout stays in base.css.
    ========================================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap');

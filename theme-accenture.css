@@ -1,8 +1,5 @@
 /* =========================================================
    theme-accenture.css  — v2 (closer to real Accenture brand)
-   Brand basis: purple #A100FF + absolute black #000000,
-   bold sans-serif, sharp ">" growth motif, high contrast.
-   Overrides CSS variables only; layout stays in base.css.
    ========================================================= */
 
 :root {

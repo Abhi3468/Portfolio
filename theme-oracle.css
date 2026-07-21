@@ -1,8 +1,5 @@
 /* =========================================================
    theme-oracle.css  — Oracle Brand Theme
-   Brand basis: Oracle Red #E61E25 + Professional Gray #5E5E5E
-   Modern, clean, enterprise-focused design inspired by oracle.com
-   Overrides CSS variables only; layout stays in base.css.
    ========================================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');

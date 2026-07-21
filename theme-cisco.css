@@ -1,8 +1,5 @@
 /* =========================================================
    theme-cisco.css  — Cisco Brand Theme
-   Brand basis: Corporate Blue #0070C7 + Professional Gray #5E5E5E
-   Modern, clean, enterprise-focused design inspired by cisco.com
-   Overrides CSS variables only; layout stays in base.css.
    ========================================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
