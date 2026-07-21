@@ -40,7 +40,14 @@
         /* ---------- 2. READ ?company= PARAM ---------- */
         const params = new URLSearchParams(window.location.search);
         const raw = params.get('company') || '';
-        const key = raw.trim().toLowerCase();
+        const requestedCompany = raw.trim().toLowerCase();
+        const aliases = {
+            'goldman-sachs': 'goldmansachs',
+            'goldman sachs': 'goldmansachs',
+            goldman: 'goldmansachs',
+            gs: 'goldmansachs'
+        };
+        const key = aliases[requestedCompany] || requestedCompany;
 
         /* ---------- 2b. COMPANY CONTENT ---------- */
         const companyContent = {
@@ -103,6 +110,11 @@
                 name: 'Oracle',
                 headline: 'Backend & Quality Engineer ready to build with Oracle',
                 tag: 'Python · Django · REST APIs · enterprise database systems'
+            },
+            goldmansachs: {
+                name: 'Goldman Sachs',
+                headline: 'Backend & Quality Engineer ready to build with Goldman Sachs',
+                tag: 'Python · Django · REST APIs · reliable financial systems'
             }
         };
 
@@ -111,45 +123,23 @@
         const headlineEl = document.getElementById('heroHeadline');
         const tagEl = document.getElementById('heroTag');
 
-        if (content) {
-            if (welcomeEl) welcomeEl.style.display = 'none';
-            if (headlineEl) headlineEl.textContent = 'Software Engineer — Backend & Quality Engineering';
-            if (tagEl) tagEl.textContent = 'Python · Django · REST APIs · SQL · CI/CD';
-        } else {
-            if (welcomeEl) welcomeEl.style.display = 'none';
-            if (headlineEl) headlineEl.textContent = 'Software Engineer — Backend & Quality Engineering';
-            if (tagEl) tagEl.textContent = 'Python · Django · REST APIs · SQL · CI/CD';
-        }
+        // The initial loader selects the stylesheet before paint. Do not replace it
+        // here: doing so previously made the Goldman Sachs route fall back to default.
+        if (welcomeEl) welcomeEl.style.display = 'none';
+        if (headlineEl) headlineEl.textContent = content
+            ? content.headline
+            : 'Software Engineer — Backend & Quality Engineering';
+        if (tagEl) tagEl.textContent = content
+            ? content.tag
+            : 'Python · Django · REST APIs · SQL · CI/CD';
 
-        /* ---------- 3. THEME MAP ---------- */
-        const companyThemes = {
-            accenture: 'accenture',
-            ibm: 'ibm',
-            deloitte: 'deloitte',
-            jpmorgan: 'pritzker',
-            nordea: 'pritzker',
-            microsoft: 'tech',
-            amazon: 'amazon',
-            google: 'google',
-            ey: 'ey',
-            cisco: 'cisco',
-            visa: 'visa',
-            infosys: 'infosys',
-            capgemini: 'capgemini',
-            oracle: 'oracle'
-        };
-
-        const themeFile = companyThemes[key] || 'default';
-        const themeLink = document.getElementById('themeStylesheet');
-        if (themeLink) {
-            themeLink.setAttribute('href', `theme-${themeFile}.css`);
-        }
-
-        /* ---------- 4. GOOGLE TRI-COLOR NAME ---------- */
+        /* ---------- 3. COMPANY-SPECIFIC NAME TREATMENT ---------- */
         const defaultNavEl = document.getElementById('navNameDefault');
         const defaultHeroEl = document.getElementById('heroNameDefault');
         const googleNavEl = document.getElementById('navNameGoogle');
         const googleHeroEl = document.getElementById('heroNameGoogle');
+        const goldmanNavEl = document.getElementById('navNameGoldman');
+        const goldmanHeroEl = document.getElementById('heroNameGoldman');
 
         if (key === 'google') {
             if (defaultNavEl) defaultNavEl.style.setProperty('display', 'none', 'important');
@@ -162,14 +152,29 @@
                 googleHeroEl.removeAttribute('aria-hidden');
                 googleHeroEl.style.setProperty('display', 'block', 'important');
             }
+        } else if (key === 'goldmansachs') {
+            if (defaultNavEl) defaultNavEl.style.setProperty('display', 'none', 'important');
+            if (defaultHeroEl) defaultHeroEl.style.setProperty('display', 'none', 'important');
+            if (googleNavEl) googleNavEl.style.setProperty('display', 'none', 'important');
+            if (googleHeroEl) googleHeroEl.style.setProperty('display', 'none', 'important');
+            if (goldmanNavEl) {
+                goldmanNavEl.removeAttribute('aria-hidden');
+                goldmanNavEl.style.setProperty('display', 'inline-flex', 'important');
+            }
+            if (goldmanHeroEl) {
+                goldmanHeroEl.removeAttribute('aria-hidden');
+                goldmanHeroEl.style.setProperty('display', 'block', 'important');
+            }
         } else {
             if (defaultNavEl) defaultNavEl.style.setProperty('display', 'inline', 'important');
             if (defaultHeroEl) defaultHeroEl.style.setProperty('display', 'block', 'important');
             if (googleNavEl) googleNavEl.style.setProperty('display', 'none', 'important');
             if (googleHeroEl) googleHeroEl.style.setProperty('display', 'none', 'important');
+            if (goldmanNavEl) goldmanNavEl.style.setProperty('display', 'none', 'important');
+            if (goldmanHeroEl) goldmanHeroEl.style.setProperty('display', 'none', 'important');
         }
 
-        /* ---------- 5. ACCENTURE ">" CURSOR TRAIL ---------- */
+        /* ---------- 4. ACCENTURE ">" CURSOR TRAIL ---------- */
         if (key === 'accenture') {
             const TRAIL_COUNT = 8;
             const trail = [];

@@ -22,7 +22,13 @@
                 capgemini: 'capgemini',
                 infosys: 'infosys',
                 amazon: 'amazon',
-                oracle: 'oracle'
+                oracle: 'oracle',
+                visa: 'visa',
+                goldmansachs: 'goldman-sachs',
+                'goldman-sachs': 'goldman-sachs',
+                'goldman sachs': 'goldman-sachs',
+                goldman: 'goldman-sachs',
+                gs: 'goldman-sachs'
             };
             const themeFile = companyThemes[company] || 'default';
             const link = document.createElement('link');
@@ -40,7 +46,9 @@
     <!-- LOCK: Google-only elements hidden before paint -->
     <style>
         #navNameGoogle,
-        #heroNameGoogle {
+        #heroNameGoogle,
+        #navNameGoldman,
+        #heroNameGoldman {
             display: none !important;
         }
     </style>
@@ -72,6 +80,16 @@
                     <span class="google-name">
                         <span class="l1">R</span>
                     </span>
+                </span>
+
+                <!-- GOLDMAN SACHS ONLY name -->
+                <span id="navNameGoldman" aria-hidden="true" class="gs-name">
+                    <span class="gs-logo-mark" aria-hidden="true">
+                        <span></span><span></span><span></span>
+                        <span></span><span></span><span></span>
+                        <span></span><span></span>
+                    </span>
+                    Abhishek R
                 </span>
             </a>
 
@@ -112,6 +130,16 @@
                 <span class="google-name">
                     <span class="l1">R</span>
                 </span>
+            </h1>
+
+            <!-- GOLDMAN SACHS ONLY name — locked off, JS enables only on ?company=goldman -->
+            <h1 id="heroNameGoldman" aria-hidden="true" class="gs-name">
+                <span class="gs-logo-mark" aria-hidden="true">
+                    <span></span><span></span><span></span>
+                    <span></span><span></span><span></span>
+                    <span></span><span></span>
+                </span>
+                Abhishek R
             </h1>
 
             <!-- THIS is the fixed subtitle line — NEVER touched by JS, always static -->

@@ -1,0 +1,387 @@
+/* =========================================================
+   theme-goldman-sachs.css
+   Goldman Sachs — Dark Navy / Gold institutional theme.
+   Brand colors: Navy #0033A0, Gold #C8A951, White #FFFFFF, Dark #000000
+   Overrides CSS variables only; layout stays in base.css.
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap');
+
+:root {
+    /* Goldman Sachs Brand Palette */
+    --gs-navy: #0033A0;
+    --gs-navy-dark: #00287A;
+    --gs-navy-light: #0044CC;
+    --gs-gold: #C8A951;
+    --gs-gold-dark: #A68B3D;
+    --gs-gold-light: #E8D4A0;
+    --gs-white: #FFFFFF;
+    --gs-dark: #000000;
+    --gs-dark-gray: #1A1A1A;
+    --gs-medium-gray: #4A4A4A;
+    --gs-light-gray: #F5F5F5;
+    --gs-border: #E0E0E0;
+
+    /* Semantic mappings for base.css variables */
+    --accent: var(--gs-gold);
+    --accent-dark: var(--gs-gold-dark);
+    --accent-hover: var(--gs-gold-light);
+    --accent-soft: #FFF8E7;
+    --bg: var(--gs-white);
+    --bg-alt: var(--gs-light-gray);
+    --text: var(--gs-dark);
+    --text-muted: var(--gs-medium-gray);
+    --heading-font: 'Merriweather', Georgia, serif;
+    --body-font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --nav-bg: var(--gs-white);
+    --nav-link: var(--gs-dark-gray);
+    --border: var(--gs-border);
+    --heading: var(--gs-navy);
+    --radius: 4px;
+    --font-body: var(--body-font);
+    --font-head: var(--heading-font);
+    --accent-text: var(--gs-navy);
+}
+
+/* ── TYPOGRAPHY ── */
+h1, h2, h3, h4 {
+    font-family: var(--heading-font);
+    color: var(--heading);
+    font-weight: 700;
+}
+
+body {
+    font-family: var(--body-font);
+    color: var(--text);
+    background: var(--bg);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAVBAR ── */
+.navbar {
+    background: var(--gs-white);
+    border-bottom: 1px solid var(--gs-border);
+    box-shadow: 0 1px 3px rgba(0, 51, 160, 0.08);
+}
+
+.nav-brand {
+    font-family: var(--heading-font);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--gs-navy);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+}
+
+.nav-menu a {
+    color: var(--gs-dark-gray);
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+}
+
+.nav-menu a:hover {
+    color: var(--gs-navy);
+}
+
+/* ── HERO / HERO ── */
+header,
+.hero {
+    background: var(--gs-navy);
+    color: var(--gs-white);
+    position: relative;
+}
+
+header::before,
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--gs-navy) 0%, var(--gs-navy-dark) 100%);
+    z-index: 0;
+}
+
+header > .container,
+.hero > .container {
+    position: relative;
+    z-index: 1;
+}
+
+header a,
+.hero a {
+    color: var(--gs-gold-light);
+}
+
+.kicker {
+    color: var(--gs-gold);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    font-family: var(--body-font);
+}
+
+.hero-role,
+.hero-headline,
+.hero-tag {
+    color: var(--gs-white);
+}
+
+/* ── HEADINGS ── */
+h2 {
+    border-bottom: 3px solid var(--gs-gold);
+    padding-bottom: 8px;
+    margin-bottom: 1.5rem;
+}
+
+h3 {
+    color: var(--gs-navy);
+}
+
+/* ── LINKS ── */
+a {
+    color: var(--gs-navy);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--gs-gold);
+    text-decoration: underline;
+}
+
+/* ── BUTTONS ── */
+.btn,
+button.primary {
+    background: var(--gs-gold);
+    color: var(--gs-navy);
+    border: none;
+    border-radius: var(--radius);
+    font-weight: 600;
+    font-family: var(--body-font);
+    font-size: 0.9rem;
+    padding: 0.75rem 1.5rem;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.btn:hover,
+button.primary:hover {
+    background: var(--gs-gold-light);
+    color: var(--gs-navy-dark);
+    text-decoration: none;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(200, 169, 81, 0.3);
+}
+
+.btn-primary {
+    background: var(--gs-gold);
+    color: var(--gs-navy) !important;
+    border: none;
+}
+
+.btn-primary:hover {
+    background: var(--gs-gold-light);
+    color: var(--gs-navy-dark) !important;
+}
+
+.btn-outline {
+    background: transparent !important;
+    border: 2px solid var(--gs-gold) !important;
+    color: var(--gs-gold) !important;
+}
+
+.btn-outline:hover {
+    background: var(--gs-gold) !important;
+    color: var(--gs-navy) !important;
+    border-color: var(--gs-gold) !important;
+}
+
+/* ── COMPANY WELCOME BANNER ── */
+#companyWelcome {
+    background: var(--gs-gold-light);
+    border-left: 4px solid var(--gs-gold);
+    color: var(--gs-navy-dark);
+    padding: 12px 16px;
+    border-radius: var(--radius);
+    font-weight: 500;
+}
+
+/* ── CARDS & SECTIONS ── */
+.section-alt,
+.card {
+    background: var(--bg-alt);
+    border-radius: 8px;
+    border: 1px solid var(--gs-border);
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.section-alt:hover,
+.card:hover {
+    box-shadow: 0 8px 24px rgba(0, 51, 160, 0.08);
+    border-color: var(--gs-gold);
+}
+
+/* ── FOCUS STATES ── */
+a:focus-visible,
+.btn:focus-visible,
+button:focus-visible {
+    outline: 3px solid var(--gs-gold);
+    outline-offset: 2px;
+    border-radius: var(--radius);
+}
+
+/* ── FORM ELEMENTS ── */
+input,
+textarea,
+select {
+    border: 1px solid var(--gs-border);
+    border-radius: var(--radius);
+    padding: 0.75rem 1rem;
+    font-family: var(--body-font);
+    background: var(--gs-white);
+    color: var(--text);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--gs-navy);
+    box-shadow: 0 0 0 3px rgba(0, 51, 160, 0.15);
+}
+
+/* ── FOOTER ── */
+footer {
+    background: var(--gs-dark-gray);
+    color: var(--gs-white);
+    border-top: 1px solid var(--gs-border);
+}
+
+footer a {
+    color: var(--gs-gold-light);
+}
+
+footer a:hover {
+    color: var(--gs-gold);
+}
+
+/* ── NAV LOGO GOLDMAN STYLE ── */
+.gs-logo-mark {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    margin-right: 8px;
+}
+
+.gs-logo-mark span {
+    display: block;
+    width: 3px;
+    height: 18px;
+    background: var(--gs-navy);
+    border-radius: 1px;
+}
+
+.gs-logo-mark span:nth-child(2n) {
+    height: 14px;
+}
+
+.gs-logo-mark span:nth-child(3n) {
+    height: 22px;
+}
+
+/* Keep the mark visible against the navy hero background. */
+.hero .gs-logo-mark span {
+    background: var(--gs-gold);
+}
+
+/* ── GOLDMAN NAME ANIMATION ── */
+.gs-name {
+    font-family: var(--heading-font);
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--gs-navy);
+    letter-spacing: -0.02em;
+}
+
+.gs-name span {
+    display: inline-block;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.gs-name:hover span {
+    color: var(--gs-gold);
+    transform: translateY(-2px);
+}
+
+/* ── HERO NAME GOLDMAN ── */
+#heroNameGoldman {
+    font-family: var(--heading-font);
+    font-weight: 700;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    line-height: 1.1;
+    color: var(--gs-white);
+    letter-spacing: -0.03em;
+}
+
+#heroNameGoldman .gs-gold {
+    color: var(--gs-gold);
+}
+
+/* ── SECTION KICKER ── */
+.kicker {
+    color: var(--gs-gold);
+    font-family: var(--body-font);
+    font-weight: 600;
+}
+
+/* ── HORIZONTAL RULE / DIVIDERS ── */
+hr,
+.section-divider {
+    border: none;
+    border-top: 1px solid var(--gs-border);
+    margin: 2rem 0;
+}
+
+/* ── FOCUS VISIBLE FOR ACCESSIBILITY ── */
+:focus-visible {
+    outline: 3px solid var(--gs-gold);
+    outline-offset: 2px;
+}
+
+/* ── REDUCED MOTION ── */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ── PRINT STYLES ── */
+@media print {
+    .navbar,
+    .btn,
+    .btn-primary,
+    .btn-outline,
+    #companyWelcome {
+        display: none !important;
+    }
+    
+    body {
+        background: white;
+        color: black;
+    }
+    
+    a {
+        color: var(--gs-navy) !important;
+        text-decoration: underline;
+    }
+}
