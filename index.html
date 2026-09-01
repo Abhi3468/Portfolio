@@ -1,320 +1,613 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abhishek R — Software Engineer</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Abhishek R — Backend Software Engineer. Building reliable systems, clean APIs, and resilient data workflows.">
+  <title>Abhishek R | Backend Software Engineer</title>
 
-    <link rel="stylesheet" href="base.css">
-    <script>
-        (function () {
-            const params = new URLSearchParams(window.location.search);
-            const company = (params.get('company') || '').trim().toLowerCase();
-            const companyThemes = {
-                accenture: 'accenture',
-                ibm: 'ibm',
-                deloitte: 'deloitte',
-                microsoft: 'microsoft',
-                google: 'google',
-                ey: 'ey',
-                cisco: 'cisco',
-                capgemini: 'capgemini',
-                infosys: 'infosys',
-                amazon: 'amazon',
-                oracle: 'oracle',
-                visa: 'visa',
-                goldmansachs: 'goldman-sachs',
-                'goldman-sachs': 'goldman-sachs',
-                'goldman sachs': 'goldman-sachs',
-                goldman: 'goldman-sachs',
-                gs: 'goldman-sachs'
-            };
-            const themeFile = companyThemes[company] || 'default';
-            const link = document.createElement('link');
-            link.rel = 'stylesheet';
-            link.id = 'themeStylesheet';
-            link.href = `theme-${themeFile}.css`;
-            document.head.appendChild(link);
-        })();
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Inter:wght@400;600;700&display=swap"
-        rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- LOCK: Google-only elements hidden before paint -->
-    <style>
-        #navNameGoogle,
-        #heroNameGoogle,
-        #navNameGoldman,
-        #heroNameGoldman {
-            display: none !important;
-        }
-    </style>
+  <style>
+    /* ===== CSS Variables ===== */
+    :root {
+      --bg: #0a0f1a;
+      --bg-elevated: #111827;
+      --bg-card: #151d2e;
+      --text: #e8edf5;
+      --text-muted: #8b98ad;
+      --text-subtle: #5a6a85;
+      --accent: #00d4aa;
+      --accent-dim: #00b894;
+      --accent-soft: rgba(0, 212, 170, 0.1);
+      --border: #1e2a3e;
+      --border-light: #2a3a52;
+      --font-mono: 'DM Mono', monospace;
+      --font-sans: 'Manrope', system-ui, sans-serif;
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.2);
+      --shadow-md: 0 8px 24px rgba(0,0,0,0.3);
+      --shadow-lg: 0 16px 48px rgba(0,0,0,0.4);
+      --transition: 0.2s ease;
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f8fafc;
+        --bg-elevated: #ffffff;
+        --bg-card: #ffffff;
+        --text: #0f172a;
+        --text-muted: #475569;
+        --text-subtle: #94a3b8;
+        --accent: #00a87a;
+        --accent-dim: #00966e;
+        --accent-soft: rgba(0, 168, 122, 0.1);
+        --border: #e2e8f0;
+        --border-light: #e2e8f0;
+        --shadow-sm: 0 2px 8px rgba(15,23,42,0.06);
+        --shadow-md: 0 8px 24px rgba(15,23,42,0.08);
+        --shadow-lg: 0 16px 48px rgba(15,23,42,0.12);
+      }
+    }
+
+    /* ===== Reset ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; height: auto; display: block; }
+    button { font: inherit; cursor: pointer; border: none; background: none; }
+    ul { list-style: none; }
+
+    /* ===== Layout ===== */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 100px 0; }
+    .section-header { margin-bottom: 48px; text-align: center; }
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+    .section-title em { font-style: italic; color: var(--accent); }
+
+    /* ===== Navigation ===== */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(var(--bg-elevated), 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: background var(--transition), border-color var(--transition);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px;
+    }
+    .logo {
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--text);
+    }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 8px; }
+    .nav-links a {
+      padding: 10px 18px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      border-radius: var(--radius-sm);
+      transition: color var(--transition), background var(--transition);
+    }
+    .nav-links a:hover { color: var(--text); background: var(--bg-card); }
+    .nav-cta {
+      padding: 10px 22px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--bg);
+      background: var(--accent);
+      border-radius: var(--radius-sm);
+      transition: background var(--transition), transform var(--transition);
+    }
+    .nav-cta:hover { background: var(--accent-dim); transform: translateY(-1px); }
+    .menu-btn { display: none; padding: 8px; }
+
+    /* ===== Hero ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      padding: 140px 24px 80px;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -20%, var(--accent-soft) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 100% 100%, rgba(0,212,170,0.05) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; text-align: center; max-width: 800px; }
+    .hero-kicker {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 20px;
+      display: inline-flex; align-items: center; gap: 10px;
+    }
+    .hero-kicker::before {
+      content: ''; width: 40px; height: 1px; background: linear-gradient(90deg, var(--accent), transparent);
+    }
+    .hero-title {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+    }
+    .hero-title em { font-style: italic; color: var(--accent); }
+    .hero-subtitle {
+      font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+    .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 28px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      transition: all var(--transition);
+    }
+    .btn-primary {
+      background: var(--accent); color: var(--bg);
+    }
+    .btn-primary:hover { background: var(--accent-dim); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .btn-secondary {
+      background: var(--bg-card); color: var(--text); border: 1px solid var(--border);
+    }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+    .scroll-indicator {
+      position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      color: var(--text-subtle); font-size: 0.75rem;
+      animation: bounce 2s infinite;
+    }
+    .scroll-indicator svg { width: 24px; height: 24px; stroke: currentColor; }
+    @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
+
+    /* ===== Skills Ticker ===== */
+    .ticker {
+      overflow: hidden; white-space: nowrap; padding: 16px 0;
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      background: var(--bg-elevated);
+    }
+    .ticker-track { display: inline-flex; gap: 40px; animation: ticker 30s linear infinite; }
+    .ticker-item {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-subtle);
+      display: inline-flex; align-items: center; gap: 12px;
+      white-space: nowrap;
+    }
+    .ticker-item::after { content: '✦'; color: var(--accent); }
+    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* ===== About ===== */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .about-text h2 { font-size: clamp(1.75rem, 3.5vw, 2.25rem); font-weight: 700; line-height: 1.2; margin-bottom: 20px; }
+    .about-text h2 em { font-style: italic; color: var(--accent); }
+    .about-text .lead { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 28px; line-height: 1.8; }
+    .about-text p { color: var(--text-muted); margin-bottom: 16px; }
+    .stats { display: flex; gap: 32px; margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border); }
+    .stat { text-align: left; }
+    .stat-value { font-family: var(--font-mono); font-size: 2rem; font-weight: 700; color: var(--accent); line-height: 1; }
+    .stat-label { font-size: 0.85rem; color: var(--text-subtle); margin-top: 4px; }
+    .about-visual { position: relative; }
+    .code-window {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md);
+      overflow: hidden; box-shadow: var(--shadow-lg);
+    }
+    .code-header { display: flex; align-items: center; gap: 8px; padding: 14px 18px; background: var(--bg-elevated); border-bottom: 1px solid var(--border); }
+    .code-dot { width: 12px; height: 12px; border-radius: 50%; }
+    .code-dot.red { background: #ff5f57; }
+    .code-dot.yellow { background: #ffbd2e; }
+    .code-dot.green { background: #28ca42; }
+    .code-title { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-subtle); margin-left: auto; }
+    .code-body { padding: 24px; font-family: var(--font-mono); font-size: 0.85rem; line-height: 1.8; overflow-x: auto; }
+    .code-line { display: flex; gap: 16px; }
+    .code-line-num { color: var(--text-subtle); user-select: none; min-width: 2.5em; text-align: right; }
+    .kw { color: #c792ea; } .fn { color: #82aaff; } .str { color: #c3e88d; } .comm { color: #546e7a; } .var { color: #f78c6c; } .type { color: #ffcb6b; }
+
+    /* ===== Experience ===== */
+    .experience { background: var(--bg-elevated); }
+    .timeline { position: relative; max-width: 800px; margin: 0 auto; }
+    .timeline::before {
+      content: ''; position: absolute; left: 20px; top: 0; bottom: 0;
+      width: 2px; background: linear-gradient(180deg, var(--accent), var(--border));
+    }
+    .timeline-item { position: relative; padding-left: 64px; margin-bottom: 48px; }
+    .timeline-marker {
+      position: absolute; left: 12px; top: 4px;
+      width: 18px; height: 18px; border-radius: 50%;
+      background: var(--accent); border: 3px solid var(--bg-elevated);
+      box-shadow: 0 0 0 2px var(--accent);
+    }
+    .timeline-date { font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent); font-weight: 500; margin-bottom: 8px; }
+    .timeline-company { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); margin-bottom: 4px; }
+    .timeline-role { font-size: 1.15rem; font-weight: 700; color: var(--text); margin-bottom: 12px; }
+    .timeline-role small { font-weight: 500; color: var(--text-muted); font-size: 0.85em; }
+    .timeline-desc { color: var(--text-muted); margin-bottom: 16px; line-height: 1.7; }
+    .timeline-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
+      font-family: var(--font-mono); font-size: 0.65rem;
+      padding: 4px 10px; background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); color: var(--text-muted);
+      transition: all var(--transition);
+    }
+    .tag:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ===== Projects ===== */
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; }
+    .project-card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: 32px; transition: all var(--transition); position: relative; overflow: hidden;
+    }
+    .project-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), transparent); opacity: 0; transition: opacity var(--transition);
+    }
+    .project-card:hover { transform: translateY(-4px); border-color: var(--border-light); box-shadow: var(--shadow-lg); }
+    .project-card:hover::before { opacity: 1; }
+    .project-number { font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent); font-weight: 500; margin-bottom: 16px; }
+    .project-stack { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-subtle); margin-bottom: 16px; }
+    .project-title { font-size: 1.35rem; font-weight: 700; margin-bottom: 12px; }
+    .project-desc { color: var(--text-muted); line-height: 1.7; margin-bottom: 24px; }
+    .project-links { display: flex; gap: 16px; }
+    .project-link {
+      font-family: var(--font-mono); font-size: 0.75rem; font-weight: 500;
+      display: inline-flex; align-items: center; gap: 6px; color: var(--text-muted);
+      transition: color var(--transition);
+    }
+    .project-link:hover { color: var(--accent); }
+    .project-link.primary { color: var(--accent); }
+    .project-link.primary:hover { color: var(--accent-dim); }
+
+    /* ===== Contact ===== */
+    .contact { text-align: center; background: var(--bg-elevated); }
+    .contact-title { font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 700; margin-bottom: 16px; }
+    .contact-title em { font-style: italic; color: var(--accent); }
+    .contact-desc { color: var(--text-muted); max-width: 500px; margin: 0 auto 40px; font-size: 1.1rem; }
+    .contact-links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .contact-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 16px 32px; font-size: 0.9rem; font-weight: 600;
+      border-radius: var(--radius-sm); transition: all var(--transition);
+    }
+    .contact-btn.primary { background: var(--accent); color: var(--bg); }
+    .contact-btn.primary:hover { background: var(--accent-dim); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .contact-btn.secondary { background: var(--bg-card); color: var(--text); border: 1px solid var(--border); }
+    .contact-btn.secondary:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+
+    /* ===== Footer ===== */
+    .footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+    .footer-content { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+    .footer-brand { font-family: var(--font-mono); font-size: 1.1rem; font-weight: 600; }
+    .footer-brand span { color: var(--accent); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 0.85rem; color: var(--text-muted); transition: color var(--transition); }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-copy { font-size: 0.8rem; color: var(--text-subtle); }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 768px) {
+      .nav-links { display: none; position: absolute; top: 72px; left: 0; right: 0; background: var(--bg-elevated); flex-direction: column; padding: 20px; border-bottom: 1px solid var(--border); gap: 8px; }
+      .nav-links.open { display: flex; }
+      .nav-cta { display: none; }
+      .menu-btn { display: block; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .timeline::before { left: 10px; }
+      .timeline-item { padding-left: 48px; }
+      .timeline-marker { left: 3px; }
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .hero { padding: 120px 16px 60px; }
+      .section { padding: 70px 0; }
+      .btn { width: 100%; justify-content: center; }
+      .hero-actions { flex-direction: column; }
+      .contact-btn { width: 100%; justify-content: center; }
+    }
+
+    /* ===== Reduced Motion ===== */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+      .scroll-indicator { animation: none; }
+      .ticker-track { animation: none; }
+    }
+  </style>
 </head>
-
 <body>
+  <!-- Navigation -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="#top" class="logo" aria-label="Abhishek R - Home">AR<span>.</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="nav-cta">Get in touch</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+  </nav>
 
-    <!-- NAV -->
-    <nav>
-        <div class="container nav-inner">
-            <a class="nav-logo brand" href="#hero">
-                <span class="ibm-logo-mark" aria-hidden="true">
-                    <span></span><span></span><span></span>
-                    <span></span><span></span><span></span>
-                    <span></span><span></span>
-                </span>
+  <!-- Hero -->
+  <header class="hero" id="top">
+    <div class="hero-content">
+      <p class="hero-kicker">Backend Software Engineer · Bengaluru, India</p>
+      <h1 class="hero-title">Building reliable systems for <em>real-world</em> scale.</h1>
+      <p class="hero-subtitle">Software engineer with 2+ years of enterprise experience across backend development, quality engineering, data workflows, and production support. I write clean APIs, validate data at scale, and help teams ship with confidence.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">View Projects <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></a>
+        <a href="#contact" class="btn btn-secondary">Let's Connect <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></a>
+      </div>
+      <div class="scroll-indicator" aria-hidden="true">
+        <span>Scroll to explore</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+    </div>
+  </header>
 
-                <!-- DEFAULT name -->
-                <span id="navNameDefault">Abhishek R</span>
+  <!-- Skills Ticker -->
+  <div class="ticker" aria-label="Core technical skills">
+    <div class="ticker-track">
+      <span class="ticker-item">Python</span>
+      <span class="ticker-item">Django</span>
+      <span class="ticker-item">Django REST</span>
+      <span class="ticker-item">MySQL</span>
+      <span class="ticker-item">JavaScript</span>
+      <span class="ticker-item">Gunicorn</span>
+      <span class="ticker-item">GitHub Actions</span>
+      <span class="ticker-item">Git</span>
+      <span class="ticker-item">REST APIs</span>
+      <span class="ticker-item">SQL</span>
+      <span class="ticker-item">Python</span>
+      <span class="ticker-item">Django</span>
+      <span class="ticker-item">Django REST</span>
+      <span class="ticker-item">MySQL</span>
+      <span class="ticker-item">JavaScript</span>
+      <span class="ticker-item">Gunicorn</span>
+      <span class="ticker-item">GitHub Actions</span>
+      <span class="ticker-item">Git</span>
+      <span class="ticker-item">REST APIs</span>
+      <span class="ticker-item">SQL</span>
+    </div>
+  </div>
 
-                <!-- GOOGLE ONLY name -->
-                <span id="navNameGoogle" aria-hidden="true">
-                    <span class="google-name">
-                        <span class="l1">A</span><span class="l2">b</span><span class="l3">h</span><span
-                            class="l4">i</span><span class="l5">s</span><span class="l6">h</span><span
-                            class="l7">e</span><span class="l8">k</span>
-                    </span>
-                    &nbsp;
-                    <span class="google-name">
-                        <span class="l1">R</span>
-                    </span>
-                </span>
-
-                <!-- GOLDMAN SACHS ONLY name -->
-                <span id="navNameGoldman" aria-hidden="true" class="gs-name">
-                    <span class="gs-logo-mark" aria-hidden="true">
-                        <span></span><span></span><span></span>
-                        <span></span><span></span><span></span>
-                        <span></span><span></span>
-                    </span>
-                    Abhishek R
-                </span>
-            </a>
-
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#certs">Certifications</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <button class="hamburger" id="hamburger" aria-label="Menu">
-                <span></span><span></span><span></span>
-            </button>
+  <!-- About -->
+  <section class="section" id="about" aria-labelledby="about-title">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">01 — Profile</span>
+        <h2 id="about-title" class="section-title">Engineering with <em>clarity</em> and purpose.</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p class="lead">I work at the intersection of backend engineering and operational reliability — designing clean APIs, validating data at scale, resolving production incidents, and helping teams ship with confidence.</p>
+          <p>Currently at <strong>Tata Consultancy Services</strong> on the Nordea Bank engagement, I maintain enterprise banking software through production troubleshooting, log analysis, SQL validation, and debugging. I also support mainframe-to-Snowflake data workflows with a focus on accurate migration and validation.</p>
+          <p>Alongside my enterprise role, I build Django applications that demonstrate API design, concurrent transaction handling, authentication, audit logging, and practical task-management workflows.</p>
+          <div class="stats">
+            <div class="stat"><div class="stat-value">2+</div><div class="stat-label">Years engineering</div></div>
+            <div class="stat"><div class="stat-value">500+</div><div class="stat-label">DSA problems solved</div></div>
+            <div class="stat"><div class="stat-value">8.10</div><div class="stat-label">Engineering CGPA</div></div>
+          </div>
         </div>
-    </nav>
-
-    <!-- HERO -->
-    <header class="hero">
-        <div class="container">
-
-            <!-- Company welcome banner — JS shows this only when ?company= is set -->
-            <p id="companyWelcome" style="display:none;" class="company-welcome"></p>
-
-            <p class="kicker">Software Engineer</p>
-
-            <!-- DEFAULT name — always shown UNLESS Google overrides -->
-            <h1 id="heroNameDefault">Abhishek R</h1>
-
-            <!-- GOOGLE ONLY name — locked off, JS enables only on ?company=google -->
-            <h1 id="heroNameGoogle" aria-hidden="true">
-                <span class="google-name">
-                    <span class="l1">A</span><span class="l2">b</span><span class="l3">h</span><span
-                        class="l4">i</span><span class="l5">s</span><span class="l6">h</span><span
-                        class="l7">e</span><span class="l8">k</span>
-                </span>
-                &nbsp;
-                <span class="google-name">
-                    <span class="l1">R</span>
-                </span>
-            </h1>
-
-            <!-- GOLDMAN SACHS ONLY name — locked off, JS enables only on ?company=goldman -->
-            <h1 id="heroNameGoldman" aria-hidden="true" class="gs-name">
-                <span class="gs-logo-mark" aria-hidden="true">
-                    <span></span><span></span><span></span>
-                    <span></span><span></span><span></span>
-                    <span></span><span></span>
-                </span>
-                Abhishek R
-            </h1>
-
-            
-            <p class="hero-role">Software Engineer · Backend &amp; Quality Engineering</p>
-            <!-- <p class="hero-headline" id="heroHeadline">Software Engineer — Backend &amp; Quality Engineering</p> -->
-            <p class="hero-tag" id="heroTag">Python · Django · REST APIs · SQL · CI/CD</p>
-
-            <div class="btns">
-                <a href="#projects" class="btn btn-primary">View Projects</a>
-                <a href="#contact" class="btn btn-primary">Get in Touch</a>
+        <div class="about-visual">
+          <div class="code-window" role="img" aria-label="Code sample showing a Django REST API view">
+            <div class="code-header">
+              <span class="code-dot red"></span>
+              <span class="code-dot yellow"></span>
+              <span class="code-dot green"></span>
+              <span class="code-title">views.py</span>
             </div>
-        </div>
-    </header>
-
-    <!-- ABOUT -->
-    <section id="about">
-        <div class="container">
-            <p class="kicker">About</p>
-            <h2>Professional Summary</h2>
-            <p class="section-sub">Backend systems, REST APIs, and production-ready delivery.</p>
-            <div class="about-grid">
-                <div class="reveal">
-                    <p>Software Engineer with 2 years of professional experience and building backend systems in
-                        in Python. Specialized in designing REST APIs, optimizing SQL queries and database schema, and
-                        shipping production-ready applications using Django and PostgreSQL. Experienced in owning
-                        features end-to-end — from design through containerized deployment with Docker and CI/CD (GitHub
-                        Actions) — and debugging production issues in fast-moving environments. Strong product sense
-                        with full-stack experience across backend services and responsive frontends.</p>
-                </div>
-                <aside class="facts reveal">
-                    <h4>Quick Facts</h4>
-                    <div><span>Role</span><span>Software Engineer</span></div>
-                    <div><span>Experience</span><span>2 Years</span></div>
-                    <div><span>Location</span><span>Bengaluru, India</span></div>
-                    <div><span>Core Stack</span><span>Python · Django · PostgreSQL</span></div>
-                    <div><span>Education</span><span>BE, ECE (VTU)</span></div>
-                </aside>
+            <div class="code-body">
+              <div class="code-line"><span class="code-line-num">1</span><span class="kw">from</span> rest_framework <span class="kw">import</span> viewsets, permissions</div>
+              <div class="code-line"><span class="code-line-num">2</span><span class="kw">from</span> .models <span class="kw">import</span> Transaction</div>
+              <div class="code-line"><span class="code-line-num">3</span><span class="kw">from</span> .serializers <span class="kw">import</span> TransactionSerializer</div>
+              <div class="code-line"><span class="code-line-num">4"></span></div>
+              <div class="code-line"><span class="code-line-num">5</span><span class="kw">class</span> <span class="type">TransactionViewSet</span>(viewsets.ModelViewSet):</div>
+              <div class="code-line"><span class="code-line-num">6</span>    queryset = Transaction.objects.select_related(<span class="str">'account'</span>).all()</div>
+              <div class="code-line"><span class="code-line-num">7</span>    serializer_class = TransactionSerializer</div>
+              <div class="code-line"><span class="code-line-num">8</span>    permission_classes = [permissions.IsAuthenticated]</div>
+              <div class="code-line"><span class="code-line-num">9"></span></div>
+              <div class="code-line"><span class="code-line-num">10</span>    <span class="kw">def</span> <span class="fn">perform_create</span>(<span class="var">self</span>, serializer):</div>
+              <div class="code-line"><span class="code-line-num">11</span>        serializer.save(account=<span class="var">self</span>.request.user.account)</div>
+              <div class="code-line"><span class="code-line-num">12</span>        AuditLog.objects.create(action=<span class="str">'TXN_CREATED'</span>, user=<span class="var">self</span>.request.user)</div>
             </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- SKILLS -->
-    <section id="skills" class="alt">
-        <div class="container">
-            <p class="kicker">Skills</p>
-            <h2>Technical Skills</h2>
-            <p class="section-sub">Tools and technologies I work with.</p>
-            <div class="skill-grid">
-                <div class="skill-card reveal">
-                    <h3>Languages</h3>
-                    <div class="chips"><span class="chip">Python</span><span class="chip">SQL</span><span
-                            class="chip">C</span><span
-                            class="chip">JavaScript</span></div>
-                </div>
-                <div class="skill-card reveal">
-                    <h3>Backend &amp; APIs</h3>
-                    <div class="chips"><span class="chip">Django</span><span class="chip">Django REST
-                            Framework</span><span class="chip">RESTful API</span></div>
-                </div>
-                <div class="skill-card reveal">
-                    <h3>Databases</h3>
-                    <div class="chips"><span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span
-                            class="chip">Schema Design</span><span class="chip">Query Optimization</span></div>
-                </div>
-                <div class="skill-card reveal">
-                    <h3>DevOps &amp; Deployment</h3>
-                    <div class="chips"><span class="chip">Docker</span><span class="chip">Docker Compose</span><span
-                            class="chip">Gunicorn</span><span class="chip">CI/CD</span><span class="chip">GitHub
-                            Actions</span></div>
-                </div>
-                <div class="skill-card reveal">
-                    <h3>Testing &amp; Quality</h3>
-                    <div class="chips"><span class="chip">Unit Testing</span><span class="chip">Postman</span><span class="chip">STLC</span></div>
-                </div>
-                <div class="skill-card reveal">
-                    <h3>Tools &amp; Concepts</h3>
-                    <div class="chips"><span class="chip">PyCharm</span><span class="chip">VS Code</span><span
-                            class="chip">Git</span><span class="chip">SDLC</span></div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Experience -->
+  <section class="section experience" id="experience" aria-labelledby="exp-title">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">02 — Experience</span>
+        <h2 id="exp-title" class="section-title">Making systems more <em>resilient</em>.</h2>
+      </div>
+      <div class="timeline">
+        <article class="timeline-item">
+          <span class="timeline-marker" aria-hidden="true"></span>
+          <div class="timeline-date">JUN 2024 — PRESENT</div>
+          <div class="timeline-company">TATA CONSULTANCY SERVICES</div>
+          <h3 class="timeline-role">Software Engineer <small>/ Backend &amp; Quality Engineering</small></h3>
+          <p class="timeline-desc">Client engagement: <strong>Nordea Bank</strong>. Maintain enterprise banking software through production troubleshooting, log analysis, SQL validation, and debugging. Support mainframe-to-Snowflake data processing workflows with focus on reliable migration and validation. Collaborate across release validation, defect resolution, deployments, and Agile planning.</p>
+          <div class="timeline-tags">
+            <span class="tag">Python</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Mainframe</span>
+            <span class="tag">Snowflake</span>
+            <span class="tag">JIRA</span>
+            <span class="tag">Agile</span>
+          </div>
+        </article>
+        <article class="timeline-item">
+          <span class="timeline-marker" aria-hidden="true"></span>
+          <div class="timeline-date">2022 — 2024</div>
+          <div class="timeline-company">ACADEMIC &amp; PERSONAL PROJECTS</div>
+          <h3 class="timeline-role">Backend Developer <small>/ Full-Stack Engineering</small></h3>
+          <p class="timeline-desc">Built Django applications that demonstrate REST API design, authentication, concurrent transaction handling, database-backed workflows, PDF exports, and responsive JavaScript interfaces.</p>
+          <div class="timeline-tags">
+            <span class="tag">Django</span>
+            <span class="tag">Django REST</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Gunicorn</span>
+            <span class="tag">ReportLab</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
-    <!-- EXPERIENCE -->
-    <section id="experience">
-        <div class="container">
-            <p class="kicker">Experience</p>
-            <h2>Work Experience</h2>
-            <p class="section-sub">Where I've delivered.</p>
-            <div class="timeline reveal">
-                <h3 class="role">Software Engineer (Backend &amp; Quality Engineering)</h3>
-                <p class="meta">Tata Consultancy Services, Bengaluru · Client: Nordea Bank · Jun 2024 – Present</p>
-                <ul>
-                    <li>Engineered backend data-processing workflows integrating Mainframe and Snowflake, supporting
-                        batch pipelines across the banking platform.</li>
-                    <li>Optimized SQL queries to perform data validation and quality checks, ensuring data integrity
-                        across high-volume datasets.</li>
-                    <li>Designed test scenarios and test cases for data pipelines and batch processing systems,
-                        improving early defect detection.</li>
-                    <li>Collaborated with cross-functional teams to diagnose and resolve defects, improving overall
-                        system reliability.</li>
-                    <li>Supported production systems to ensure high availability and performance, debugging issues in a
-                        live banking environment.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+  <!-- Projects -->
+  <section class="section" id="projects" aria-labelledby="projects-title">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">03 — Selected Work</span>
+        <h2 id="projects-title" class="section-title">Projects with <em>purpose</em>.</h2>
+      </div>
+      <div class="projects-grid">
+        <!-- Project 1: Banking Platform -->
+        <article class="project-card">
+          <span class="project-number">01</span>
+          <p class="project-stack">Django · Django REST Framework · JavaScript · SQLite · Gunicorn</p>
+          <h3 class="project-title">DKG Bank — Banking Simulator</h3>
+          <p class="project-desc">A Django and DRF banking simulator focused on deposits, withdrawals, authentication, API design, audit logging, rate limiting, and safe concurrent balance updates using database transactions and row-level locking.</p>
+          <div class="project-links">
+            <a href="case-studies/banking-platform.html" class="project-link primary">Case Study <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></a>
+            <a href="https://github.com/Abhi3468/DKG_Bank_Full_Stack_Django" target="_blank" rel="noopener noreferrer" class="project-link">GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.305-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></a>
+          </div>
+        </article>
 
-    <!-- PROJECTS -->
-    <section id="projects" class="alt">
-        <div class="container">
-            <p class="kicker">Projects</p>
-            <h2>Featured Projects</h2>
-            <p class="section-sub">End-to-end builds.</p>
-            <div class="proj-grid">
-                <div class="proj-card reveal">
-                    <h3>Banking Full-Stack Web App</h3>
-                    <p>Production-ready banking platform with an API-driven architecture and responsive frontend.
-                        Implemented token-based authentication / 2FA, transaction audit logging, automated PDF receipts,
-                        and a GitHub Actions CI/CD pipeline validating concurrency stability and API rate limiting.</p>
-                    <div class="tags"><span class="tag">Django REST Framework</span><span
-                            class="tag">PostgreSQL</span><span class="tag">Docker</span><span class="tag">GitHub
-                            Actions</span></div>
-                </div>
-                <div class="proj-card reveal">
-                    <h3>TODOIFY — Task Management App</h3>
-                    <p>Full-stack task management application with Django and PostgreSQL, containerized with Docker.
-                        Orchestrated multi-container services with Docker Compose, automating migrations and backend
-                        initialization, with production-ready Gunicorn serving and environment-based secret management.
-                    </p>
-                    <div class="tags"><span class="tag">Django</span><span class="tag">PostgreSQL</span><span
-                            class="tag">Docker Compose</span><span class="tag">Gunicorn</span></div>
-                </div>
-            </div>
-        </div>
-    </section>
+        <!-- Project 2: Todoify -->
+        <article class="project-card">
+          <span class="project-number">02</span>
+          <p class="project-stack">Django · Django REST Framework · MySQL · JavaScript · ReportLab</p>
+          <h3 class="project-title">Todo — Task Manager</h3>
+          <p class="project-desc">A Django task-management application with authentication, REST endpoints, asynchronous JavaScript interactions, complete task CRUD workflows, password recovery, and PDF task-list exports.</p>
+          <div class="project-links">
+            <a href="case-studies/todoify.html" class="project-link primary">Case Study <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></a>
+            <a href="https://github.com/Abhi3468/Todo" target="_blank" rel="noopener noreferrer" class="project-link">GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.305-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
-    <!-- CERTIFICATIONS -->
-    <section id="certs">
-        <div class="container">
-            <p class="kicker">Credentials</p>
-            <h2>Certifications</h2>
-            <p class="section-sub">Continuous learning.</p>
-            <div class="cert-grid">
-                <div class="cert reveal">REST API Design — Udemy</div>
-                <div class="cert reveal">API Technical Writing: JSON and XML for Writers — Udemy</div>
-                <div class="cert reveal">Python Programming and Python Functions — Udemy</div>
-                <div class="cert reveal">Python 101: Develop Your First Python Program — Coursera</div>
-                <div class="cert reveal">Introduction to Programming Using Python — HackerRank</div>
-                <div class="cert reveal">500 difficulty rating coding problems — CodeChef</div>
-                <div class="cert reveal">Internship in Embedded &amp; IoT — Pentagon Space Pvt. Ltd.</div>
-            </div>
-        </div>
-    </section>
+  <!-- Contact -->
+  <section class="section contact" id="contact" aria-labelledby="contact-title">
+    <div class="container">
+      <h2 id="contact-title" class="contact-title">Ready to build something <em>reliable</em> together?</h2>
+      <p class="contact-desc">I'm currently open to backend engineering roles where I can contribute to systems that matter. Whether it's APIs, data pipelines, or platform infrastructure — let's talk.</p>
+      <div class="contact-links">
+        <a href="mailto:abhishekr3468@gmail.com" class="contact-btn primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          Email Me
+        </a>
+        <a href="https://linkedin.com/in/abhishekr3468" target="_blank" rel="noopener noreferrer" class="contact-btn secondary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/Abhi3468" target="_blank" rel="noopener noreferrer" class="contact-btn secondary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.305-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <p class="kicker">Contact</p>
-            <h2>Let's Connect</h2>
-            <div class="contact-links">
-                <a href="mailto:abhishekabhi.r.2001@gmail.com">abhishekabhi.r.2001@gmail.com</a>
-                <a href="tel:+916362751007">+91 6362751007</a>
-                <a href="https://linkedin.com/in/abhishek-r-652915211" target="_blank">LinkedIn</a>
-                <a href="https://github.com/Abhi3468" target="_blank">GitHub</a>
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-content">
+        <p class="footer-brand">AR<span>.</span></p>
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="#about">About</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <p class="footer-copy">Built with care by Abhishek R · <span id="year"></span></p>
+      </div>
+    </div>
+  </footer>
 
-            </div>
-        </div>
-    </section>
+  <script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn?.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', isOpen);
+    });
 
-    <footer>
-        &copy; <span id="year"></span> Abhishek R. All rights reserved.
-    </footer>
+    // Close menu on link click
+    navLinks?.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
 
-    <script src="script.js"></script>
+    // Current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
 </body>
-
 </html>

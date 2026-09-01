@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Case study: DKG Bank, a Django and Django REST Framework banking simulator focused on safe concurrent transactions and API design.">
+  <title>DKG Bank — Case Study | Abhishek R</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#0a0f1a; --surface:#111827; --card:#151d2e; --text:#e8edf5; --muted:#8b98ad; --accent:#00d4aa; --border:#1e2a3e; --mono:'DM Mono',monospace; --sans:'Manrope',system-ui,sans-serif; }
+    @media (prefers-color-scheme:light) { :root { --bg:#f8fafc; --surface:#fff; --card:#fff; --text:#0f172a; --muted:#475569; --accent:#00966e; --border:#e2e8f0; } }
+    * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--text); font:16px/1.7 var(--sans); } a { color:inherit; text-decoration:none; } .container { max-width:900px; margin:auto; padding:0 24px; } .back { display:inline-flex; gap:8px; padding:20px 0; color:var(--muted); font:13px var(--mono); } .back:hover { color:var(--accent); } header { padding:80px 0 56px; text-align:center; } .eyebrow { color:var(--accent); font:12px var(--mono); letter-spacing:.16em; text-transform:uppercase; } h1 { margin:14px 0 18px; font-size:clamp(2.3rem,6vw,4.2rem); line-height:1.05; letter-spacing:-.04em; } em { color:var(--accent); } .lead { max-width:720px; margin:auto; color:var(--muted); font-size:1.13rem; } .meta,.actions { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-top:28px; } .pill { padding:7px 12px; border:1px solid var(--border); border-radius:6px; color:var(--muted); font:12px var(--mono); } .button { padding:12px 18px; border:1px solid var(--border); border-radius:6px; font-weight:700; } .button.primary { background:var(--accent); border-color:var(--accent); color:var(--bg); } main { padding-bottom:56px; } section { border-top:1px solid var(--border); padding:54px 0; } h2 { margin:0 0 18px; font-size:1.75rem; } h3 { margin:0 0 8px; font-size:1.05rem; } p,li { color:var(--muted); } ul { padding-left:20px; } li { margin:8px 0; } .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:24px; } .card { padding:22px; background:var(--card); border:1px solid var(--border); border-radius:12px; } .card p { margin:0; font-size:.92rem; } .note { padding:18px 20px; border-left:3px solid var(--accent); background:var(--surface); color:var(--muted); } footer { border-top:1px solid var(--border); padding:32px 0; text-align:center; color:var(--muted); font-size:.85rem; } @media(max-width:650px) { header { padding-top:52px; } .grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <div class="container"><a class="back" href="../index.html#projects">← Back to portfolio</a></div>
+  <header class="container">
+    <div class="eyebrow">Case study · 01</div>
+    <h1>DKG Bank — <em>banking simulator</em></h1>
+    <p class="lead">A Django and Django REST Framework project that explores safe account operations, API-first design, authentication, and the concurrency concerns behind financial workflows.</p>
+    <div class="meta"><span class="pill">Django</span><span class="pill">Django REST Framework</span><span class="pill">JavaScript</span><span class="pill">SQLite</span><span class="pill">Gunicorn</span></div>
+    <div class="actions"><a class="button primary" href="https://github.com/Abhi3468/DKG_Bank_Full_Stack_Django" target="_blank" rel="noopener noreferrer">View repository</a><a class="button" href="../index.html#projects">All projects</a></div>
+  </header>
+  <main class="container">
+    <section>
+      <h2>The problem</h2>
+      <p>Banking operations are a useful way to learn that an apparently simple update can become unsafe when two requests arrive at once. This project was built to model account actions while keeping transaction logic, API endpoints, and the interface understandable.</p>
+      <ul><li>Support account deposits, withdrawals, and PIN-related workflows.</li><li>Expose structured Django REST Framework endpoints alongside the web interface.</li><li>Prevent concurrent updates from taking an account balance below zero.</li><li>Record transaction and security events for diagnosis.</li></ul>
+    </section>
+    <section>
+      <h2>Architecture</h2>
+      <div class="grid"><div class="card"><h3>Browser interface</h3><p>HTML, CSS, and JavaScript provide the customer-facing workflow.</p></div><div class="card"><h3>Django + DRF</h3><p>Views and API endpoints handle authentication and banking actions.</p></div><div class="card"><h3>Data layer</h3><p>Django models persist account state; database transactions protect critical updates.</p></div></div>
+    </section>
+    <section>
+      <h2>Key engineering decisions</h2>
+      <div class="grid"><div class="card"><h3>Concurrency protection</h3><p>Critical balance changes use Django transactions and row-level locking so concurrent requests are serialized safely.</p></div><div class="card"><h3>API-first boundaries</h3><p>DRF endpoints keep application operations available as structured JSON rather than coupling all logic to a template.</p></div><div class="card"><h3>Abuse controls</h3><p>Authentication-sensitive endpoints use throttling to limit repeated requests, alongside authentication and PIN checks.</p></div></div>
+    </section>
+    <section>
+      <h2>Validation</h2>
+      <p>The repository includes automated Django tests, including a multi-threaded concurrency test for withdrawal behaviour. A reviewer can run the documented test command locally and inspect the implementation directly.</p>
+      <div class="note">This is a learning project and banking simulator—not a real financial product. It does not claim regulated compliance, production deployment, zero-downtime releases, or measured performance results.</div>
+    </section>
+    <section><h2>What I learned</h2><p>Reliability comes from explicit boundaries: make the update atomic, test the failure path, keep API behaviour clear, and avoid treating a database write as automatically safe under concurrency.</p></section>
+  </main>
+  <footer><div class="container">Case study · DKG Bank · Built by Abhishek R</div></footer>
+</body>
+</html>
